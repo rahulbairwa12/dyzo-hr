@@ -1,0 +1,78 @@
+name: Dyzo Dev Action Runner
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - run: npm ci --legacy-peer-deps
+
+      - run: npm run build --if-present --verbose
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+          VITE_APP_BASEURL: ${{ secrets.VITE_APP_BASEURL }}
+          VITE_APP_DJANGO: ${{ secrets.STAGING_DJANGO_URL }}
+          VITE_APP_TOKEN: ${{ secrets.VITE_APP_TOKEN }}
+          VITE_APP_ONESIGNAL_REST_API_KEY: ${{ secrets.VITE_APP_ONESIGNAL_REST_API_KEY }}
+          VITE_APP_ONESIGNAL_APP_ID: ${{ secrets.VITE_APP_ONESIGNAL_APP_ID }}
+          VITE_APP_RAZORPAY_KEY_ID: ${{ secrets.RAZORPAY_TEST_KEY }}
+          VITE_APP_RAZORPAY_KEY_SECRET: ${{ secrets.VITE_APP_RAZORPAY_KEY_SECRET }}
+          VITE_APP_CHATGPT_API_KEY: ${{ secrets.VITE_APP_CHATGPT_API_KEY }}
+          VITE_WEBSOCKET_URL: ${{ secrets.DEV_WEBSOCKET }}
+          CI: false
+
+      - name: Add GitHub host key to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          touch ~/.ssh/known_hosts  
+          echo "$(ssh-keyscan github.com)" >> ~/.ssh/known_hosts
+
+      - name: Add server host key to known_hosts
+        run: |
+          echo "$(ssh-keyscan -p 22 ${{ secrets.RAGHAV_SSH_HOST }})" >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        env:
+          SSH_PASSWORD: v9pMrTgRPjHhiysk7Qxd4
+        run: |
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no -p 22 deployuser@146.190.9.92 "rm -rf /home/front-staging_backup/*"
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no -p 22 deployuser@146.190.9.92 "cp -r /home/front-staging /home/front-staging_backup"
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no -p 22 deployuser@146.190.9.92 "rm -rf /home/front-staging/*"
+          sshpass -p "$SSH_PASSWORD" scp -o StrictHostKeyChecking=no -r -P 22 ./dist/* deployuser@146.190.9.92:/home/front-staging
+
+
+      - name: Check deployment status
+        id: check_status
+        run: |
+          if [[ $(curl -s -o /dev/null -w "%{http_code}" https://front.dyzo.ai/) -eq 200 ]]; then
+            echo "Deployment succeeded"
+            echo "::set-output name=status::success"
+          else
+            echo "Deployment failed"
+            echo "::set-output name=status::failure"
+          fi
+
+      - name: Rollback if deployment failed
+        if: steps.check_status.outputs.status == 'failure'
+        env:
+          SSH_PASSWORD: v9pMrTgRPjHhiysk7Qxd4
+        run: |
+          echo "Rollback initiated"
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no -p 22 deployuser@146.190.9.92 "rm -rf /home/front-staging/*"
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no -p 22 deployuser@146.190.9.92 "cp -r /home/front-staging_backup/* /home/front-staging"
+

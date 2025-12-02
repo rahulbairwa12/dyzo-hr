@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /forgot-password
+Allow: /
+
+Sitemap: https://dyzo.ai/sitemap.xml

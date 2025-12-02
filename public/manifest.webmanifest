@@ -1,0 +1,31 @@
+{
+  "name": "Dyzo Web",
+  "short_name": "Dyzo Web",
+  "description": "Task management with time tracking & screenshots",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#EEF1F9",
+  "theme_color": "#7A39FF",
+  "icons": [
+    {
+      "src": "/dyzo-ai-logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/dyzo-ai-logo.png",
+      "type": "image/jpeg",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/dyzo-ai-logo.png",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ]
+}
+
+

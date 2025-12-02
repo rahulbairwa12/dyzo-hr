@@ -1,0 +1,47 @@
+// Responsive styles for task table at 1024x634 dimension
+// General styles for responsive table
+.responsive-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+@media screen and (max-width: 1024px) and (min-width: 800px) {
+  // Reduce task name column width
+  table th.task-name-column {
+    min-width: 280px !important;
+    width: 35% !important;
+  }
+  
+  // Adjust textarea width in task rows
+  textarea.task-name-textarea {
+    max-width: 280px;
+  }
+  
+  // Reduce text truncation for task names in read mode
+  .task-name-display {
+    max-width: 250px;
+  }
+}
+
+// Specific adjustment for exactly 1024x634 dimension
+@media screen and (width: 1024px) and (height: 634px) {
+  // Additional containment for this specific dimension
+  .responsive-table-container {
+    max-width: 1024px;
+    padding-right: 10px;
+  }
+  // Further reduce task name column width
+  table th.task-name-column {
+    min-width: 240px !important;
+    width: 30% !important;
+  }
+  
+  // Adjust textarea width more aggressively
+  textarea.task-name-textarea {
+    max-width: 220px;
+  }
+  
+  // Even more reduced text truncation
+  .task-name-display {
+    max-width: 200px;
+  }
+} 

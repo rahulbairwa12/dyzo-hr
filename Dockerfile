@@ -1,0 +1,46 @@
+# ==== 1. Base Build Stage ====
+FROM node:18 AS builder
+
+# Build-time ENV variables
+ARG VITE_APP_BASEURL
+ARG VITE_APP_DJANGO
+ARG VITE_APP_TOKEN
+ARG VITE_APP_ONESIGNAL_REST_API_KEY
+ARG VITE_APP_ONESIGNAL_APP_ID
+ARG VITE_APP_RAZORPAY_KEY_ID
+ARG VITE_APP_RAZORPAY_KEY_SECRET
+ARG VITE_APP_CHATGPT_API_KEY
+
+ENV VITE_APP_BASEURL=$VITE_APP_BASEURL \
+    VITE_APP_DJANGO=$VITE_APP_DJANGO \
+    VITE_APP_TOKEN=$VITE_APP_TOKEN \
+    VITE_APP_ONESIGNAL_REST_API_KEY=$VITE_APP_ONESIGNAL_REST_API_KEY \
+    VITE_APP_ONESIGNAL_APP_ID=$VITE_APP_ONESIGNAL_APP_ID \
+    VITE_APP_RAZORPAY_KEY_ID=$VITE_APP_RAZORPAY_KEY_ID \
+    VITE_APP_RAZORPAY_KEY_SECRET=$VITE_APP_RAZORPAY_KEY_SECRET \
+    VITE_APP_CHATGPT_API_KEY=$VITE_APP_CHATGPT_API_KEY
+
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy rest of the source code and build the app
+COPY . .
+RUN npm run build
+
+
+# ==== 2. Final Runtime Stage ====
+FROM node:18-slim
+
+WORKDIR /app
+
+# Install static file server
+RUN npm install -g serve
+
+COPY --from=builder /app/dist ./dist
+
+EXPOSE 8080
+
+CMD ["serve", "-s", "dist", "-l", "8080"]

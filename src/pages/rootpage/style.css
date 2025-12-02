@@ -1,0 +1,1356 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+button {
+    font-family: "Lato", sans-serif;
+    box-shadow: none;
+}
+
+.container {
+    max-width: 1320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.headerBox {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 15px 40px;
+    box-shadow: 0px 5px 10px 0px #0000001a;
+    border-bottom: 1px solid #cecece;
+}
+
+@media (max-width:700px) {
+    .headerBox {
+        padding: 15px 10px;
+    }
+}
+
+.MobileNavigation {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: #fff;
+    color: white;
+    overflow-y: auto;
+    transition: left 0.5s ease;
+    z-index: 1000;
+    box-shadow: 0px 0px 10px #00000017;
+}
+
+.MobileNavigation.open {
+    left: 0;
+}
+
+.mobileLogoBox {
+    padding: 20px;
+    border-bottom: 1px solid #c8c8c8;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mobileLogoBox .fa {
+    color: #565656;
+    font-size: 22px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.MobileNavigationToggle {
+    display: none;
+}
+
+.MobileNavigation .mobileNavLinkBox {
+    padding: 20px;
+}
+
+.MobileNavigation .mobileNavLinkBox a {
+    display: block;
+    font-size: 16px;
+    color: #475569;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.MobileNavigation .mobileNavLinkBox .MobileNavBtn {
+    color: #000;
+    text-align: center;
+}
+
+.MobileNavigation .mobileNavLinkBox .MobileLoginBtn {
+    margin-top: 30px;
+}
+
+.headerBoxMain {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1.5fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerBoxMain a {
+    display: inline-block;
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.headerBoxMain a:hover {
+    text-decoration: underline;
+}
+
+.navigationBox .DesktopNavigationMenu {
+    text-align: center;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.headerBoxMain .ctaBox {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* CSS for Hero Section starts */
+
+.HeroMain-wrapper {
+    width: 100%;
+    padding: 45px 0 65px 0;
+    text-align: center;
+    background: #F9FAFF;
+    padding-bottom: 200px;
+}
+
+@media screen and (max-width: 768px) {
+    .HeroMain-wrapper {
+        padding-bottom: 0px;
+    }
+}
+
+.characterHero-image-wrapper {
+    width: 100%;
+    max-width: 1320px;
+    padding: 45px 0 65px 0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.heroMediaBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .characterHero-image-wrapper .heroMediaBox {
+        margin-top: 0px!important;
+    }
+}
+
+.characterHero-image-wrapper .heroMediaBox {
+    max-width: 800px;
+    margin-top: -15%!important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .characterHero-image-wrapper .heroMediaBox {
+        margin-top: 0%!important;
+    }
+}
+
+.HeroMain-wrapper h1 {
+    font-size: 36px;
+    line-height: 1.3em;
+    color: #0f172a;
+    text-transform: capitalize;
+    font-family: "Lato", sans-serif;
+    font-weight: 800;
+    max-width: 800px;
+}
+
+.heroInfoBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-tagline {
+    max-width: 700px;
+    padding: 5px 0px;
+}
+
+.highlightText {
+    background: linear-gradient(200.68deg, rgb(15, 111, 255) -2.59%, rgb(160, 38, 255) 91.29%) text;
+    color: transparent;
+}
+
+.btn-theme {
+    background: linear-gradient(200.68deg, rgb(15, 111, 255) -2.59%, rgb(160, 38, 255) 91.29%);
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.625rem 1.25rem;
+    /* Adjust as needed */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-theme:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(15, 111, 255, 0.4);
+}
+
+.HeroMain-wrapper p {
+    font-size: 14px !important;
+    color: #1e2125;
+    line-height: 1;
+    text-transform: capitalize;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+}
+
+.favour p {
+    font-size: 14px !important;
+    color: #1e2125;
+    line-height: 1.4;
+    text-transform: capitalize;
+    padding: 6px 0px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+}
+
+.HeroMain-wrapper p strong {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.HeroMain-wrapper .heroMediaBox {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 2em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.HeroMain-wrapper .heroMediaBox img {
+    width: 90%;
+}
+
+.border-none {
+    border: none !important;
+}
+
+.banner-form-container {
+    padding: 0px 20px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#insights .container {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.banner-form-container .banner-form-container-inner {
+    max-width: 580px;
+    width: 100%;
+}
+
+.banner-form-container .heroSignup-formBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    /* gap: 40px;    */
+    flex-wrap: wrap;
+}
+
+.heroSignup-formBox form {
+    width: 100%;
+    display: grid;
+    gap: 8px;
+    align-items: center;
+}
+
+.heroSignup-formBox .heroFormInputBox {
+    width: 100%;
+    text-align: left;
+}
+
+.heroSignup-formBox .heroFormInputBox span {
+    display: inline-block;
+    padding-left: 5px;
+    padding-top: 10px;
+}
+
+.heroSignup-formBox form input {
+    width: 100%;
+    padding: 10px 20px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.heroSignup-formBox form .heroFormBtn {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.banner-form-container .email-section .trial-button-banner {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 47px;
+    width: 100%;
+}
+
+.banner-form-container .info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: #333;
+}
+
+.heroTrustBox-main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 1em;
+}
+
+.heroTrustBox-main .heroTrustBox {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 6px 20px;
+    border-radius: 20px;
+}
+
+.heroTrustBox-main .heroTrustBox .feature-icon {
+    margin-right: 5px;
+}
+
+.heroTrustBox-main .heroTrustBox span {
+    font-size: 14px;
+}
+
+.googleBtn-box {
+    width: 100%;
+}
+
+.googleBtn-box .googleBtn {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 50px;
+    font-size: 16px;
+    box-shadow: none;
+    border: none;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .googleBtn-box .googleBtn {
+        width: 100%;
+    }
+}
+
+
+/* ========== pricing css  ======================= */
+
+
+/* CSS code */
+
+.pricing-main {
+    max-width: 1250px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.pricing-main h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 900;
+}
+
+.pricing-main .highlight {
+    color: #007bff;
+}
+
+.pricing-main p {
+    font-size: 16px;
+    color: #475569;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.pricing-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 25px 0px;
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+.pricing-cards .landing_card {
+    background-color: #f9faff;
+    border-radius: 8px;
+    padding: 35px 22px;
+    width: 100%;
+    max-width: 325px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.2s ease;
+}
+
+.pricing-cards .landing_card:hover {
+    transform: scale(1.02);
+}
+
+.landing_card h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.landing_card h4 {
+    font-size: 20px;
+    color: #475569;
+    margin: 15px 0;
+}
+
+.trial-button,
+.contact-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    width: 100%;
+    max-width: 320px;
+}
+
+.PlanBox-mainWrapper .landing_card .no-cradit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.PlanBox-mainWrapper .trial-button:hover,
+.contact-button:hover {
+    background-color: #0056b3;
+}
+
+.PlanBox-mainWrapper .badge {
+    background-color: #007bff;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.PlanBox-mainWrapper ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.PlanBox-mainWrapper ul li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.PlanBox-mainWrapper ul li::before {
+    content: "✔";
+    background: #007bff;
+    margin-right: 10px;
+    color: #fff;
+    border-radius: 27px;
+    padding: 6px 6px 6px 6px;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TrustBadgeMain-wrapper {
+    width: 100%;
+    text-align: center;
+    padding: 65px 0;
+}
+
+.TrustBadgeMain-wrapper .container {
+    padding: 50px;
+    background: #edf1f5;
+    max-width: 1320px;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.TrustBadgeMain-wrapper h2 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+
+/* .TrustBadgeMain-wrapper p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #475569;
+    gap: 30px;
+    margin: 20px 0;
+}
+.TrustBadgeMain-wrapper p img{
+    height: 15px;
+    object-position: center;
+    object-fit: cover;
+} */
+
+.TrustBadgeMain-wrapper .trustbadgeLogoBox {
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.Book-a-demo-btn,
+.CtaStyle {
+    padding: 13px 20px;
+    background: #8E2EFF;
+    background: linear-gradient(200.68deg, rgb(15, 111, 255) -2.59%, rgb(160, 38, 255) 91.29%);
+    color: #fff;
+    margin-top: 10px;
+    border-radius: 25px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.featuresMain-wrapper {
+    width: 100%;
+}
+
+.featuresMain-wrapper .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    /* max-width: 1020px; */
+    max-width: 1320px;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 55px 30px;
+    align-items: center;
+}
+
+
+/* For mobile screens */
+
+@media (max-width: 730px) {
+    .featuresMain-wrapper .container {
+        grid-template-columns: 1fr;
+    }
+    .featuresRightBox {
+        order: 2;
+    }
+    .featuresleftBox {
+        order: 1;
+    }
+}
+
+.featuresMain-wrapper .featureCount {
+    font-size: 16px;
+    color: #475569;
+    font-weight: bold;
+}
+
+.featuresMain-wrapper h2,
+.featuresMain-wrapper h3 {
+    font-size: 30px;
+    color: #0f172a;
+    padding: 20px 0 30px 0;
+    font-weight: 900;
+}
+
+.featuresMain-wrapper .featuresSubHeading {
+    font-size: 18px;
+    color: #475569;
+    ;
+    font-weight: 400;
+    line-height: 1.4em;
+}
+
+.featuresMain-wrapper .FeaturesTestimonialBox {
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0.6px 1px 0.3px #0000001c;
+    border-radius: 5px;
+}
+
+.fTestimonialInfoBox {
+    display: flex;
+    gap: 13px;
+    margin-top: 20px;
+}
+
+.FeaturesTestimonialBox p {
+    font-size: 16px;
+    color: #000;
+    line-height: 1.4em;
+}
+
+.fTestimonialInfoBox p span {
+    font-size: 14px;
+    color: #475569;
+}
+
+.fTestimonialInfoBox img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.InsightMainBox-wrapper {
+    width: 100%;
+    padding: 65px 0;
+    background: #F9FAFF;
+}
+
+.InsightMainBox-wrapper h2 {
+    font-size: 36px;
+    color: #0f172a;
+    text-align: center;
+    font-weight: 900;
+}
+
+.InsightMainBox-wrapper .InsightMainBoxs-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding-top: 4em;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.InsightMainBox-wrapper .InsightBox {
+    padding: 25px;
+    border: 1px solid #EAEAEA;
+    border-radius: 10px;
+    height: 300px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.InsightMainBox-wrapper h4 {
+    font-size: 22px;
+    color: #1e293b;
+    margin-top: 10px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.InsightMainBox-wrapper p {
+    text-align: center;
+    font-size: 16px;
+    color: #475569;
+    margin-top: 10px;
+}
+
+.InsightMainBox-wrapper .InsightBox img {
+    width: 100%;
+    height: 180px;           /* ya jitna aapko chahiye */
+    object-fit: contain;     /* ya cover, jo aapko better lage */
+    display: block;
+    margin: 0 auto;
+}
+
+.InsightMainBox-wrapper .insightBoxBtn-box {
+    text-align: center;
+    padding-top: 4em;
+}
+
+.plans-points li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+    position: relative;
+    text-align: left;
+}
+
+
+/* .plans-points li::before {
+    content: "✔";
+    color: #007bff;
+    font-weight: bold;
+    margin-right: 10px;
+} */
+
+.badge {
+    background-color: #007bff;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.err-msg {
+    color: red!important;
+}
+
+
+
+/* FAQs CSS */
+
+.faqSection-main {
+    max-width: 1320px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 40px 30px 80px 30px;
+    margin: 0 auto;
+    font-family: "Lato", sans-serif;
+}
+
+.faqSection-main h3 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    font-weight: 900;
+}
+
+.faqContainer-main {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.white-label.faq-answer .active {
+    height: 200px;
+}
+
+.faqBox-item {
+    /* box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px; */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faqBox-item.active {
+    background-color: #f6f6f6;
+}
+
+.faq-question {
+    background-color: #FBFBFB;
+    ;
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-bottom: 1px solid #C4C4C4;
+    outline: none;
+    transition: background-color 0.3s;
+    color: #414141;
+    border-bottom: none;
+}
+
+.faq-question span {
+    background-color: #0f6fff;
+    padding: 7px 15px;
+    border-radius: 24px;
+    color: #fff;
+}
+
+.faq-answer {
+    height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    background-color: #f6f6f6;
+    font-size: 18px;
+    font-weight: 400;
+    color: #656565;
+    transition: height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-answer.active {
+    height: auto;
+    padding-right: 40px;
+    padding-bottom: 10px;
+}
+
+.faq-question.active {
+    background-color: #f6f6f6;
+}
+
+.faq-question.active span {
+    transform: rotate(0deg);
+    color: #fff;
+}
+
+.bottomCtaMain-wrapper {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center; 
+}
+.bottomCtaMain-wrapper img.bg-img-bottomtamain {
+    height: 100% ;
+}
+
+.bottomCtaMain-container.container {
+    position: relative;
+
+    padding: 65px 30px;
+}
+
+.bottomCtaMain-wrapper h3 {
+    font-size: 36px;
+    color: #0f172a;
+    text-align: center;
+    text-transform: capitalize;
+    padding-bottom: 25px;
+    font-weight: 900;
+    line-height: 1.4;
+}
+
+.bottomCtaMain-wrapper p {
+    font-size: 18px;
+    color: #475569;
+    font-weight: 400;
+    margin: 30px 0px;
+}
+
+.bottomCtaMain-wrapper span {
+    font-size: 14px;
+    color: black;
+    font-weight: 400;
+    display: block;
+    padding-top: 30px;
+}
+
+.bottomCtaMain-wrapper .bottomcharacter-img {
+    position: absolute;
+    right: -40px;
+    top: 65px;
+}
+
+.footerLogoBox {
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    width: 100%;
+    padding: 50px 0;
+    /* background: #111112; */
+    text-align: center;
+}
+
+footer .footerLinksBox {
+    display: flex;
+    color: #fff;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer .footerFull-line {
+    margin: 30px 0;
+    border: none;
+    height: 1px;
+    background-color: #0000004a;
+}
+
+footer .footerLinksBox hr {
+    width: 1px;
+    height: 20px;
+    background: #dddddd;
+    border: 0;
+}
+
+footer .footerLinksBox .footerCopyrightBox {
+    font-size: 14px;
+    color: #000;
+}
+
+footer .footerLinksBox a {
+    display: inline-block;
+    color: #313131;
+    text-decoration: none;
+}
+
+footer .footerLinksBox .fa {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+footer .footerLinksBox a:hover {
+    text-decoration: underline;
+}
+
+footer .footerLinksBox .footerLinks {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footerSocialLinks {
+    display: flex;
+    gap: 12px;
+}
+
+@media only screen and (max-width: 1380px) {
+    .headerBoxMain {
+        grid-template-columns: 1fr 2fr 1.5fr;
+    }
+}
+
+@media only screen and (max-width: 1320px) {
+    .heroMediaBox .heroMainInfo-img {
+        width: 70%;
+    }
+    /* .HeroMain-wrapper .characterHero-image{
+        right: 40px;
+    } */
+}
+
+
+/* CSS for Hero section to Responsive design for big size (.newHeroSection-main) */
+
+@media only screen and (max-width: 1295px) and (min-width: 1024) {
+    .newHeroSection-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        justify-content: start;
+    }
+    .newHeroSection-main h1 {
+        font-size: 36px;
+        line-height: 1.4em;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .newHeroSection-main {
+        padding-top: 45px;
+        text-align: center;
+        display: grid;
+        flex-direction: column;
+        grid-template-columns: 1fr;
+        align-items: start;
+        justify-content: start;
+    }
+    .newHeroSection-main p {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .newHeroSection-main h1 {
+        font-size: 38px;
+        line-height: 1.2em;
+        text-align: center;
+        font-weight: 900;
+    }
+}
+
+
+/* Ends */
+
+@media only screen and (max-width: 1130px) {
+    .headerBoxMain {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .pricing-cards {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .headerBoxMain .ctaBox {
+        display: none;
+    }
+    .navigationBox {
+        display: flex;
+        text-align: right;
+        justify-content: right;
+    }
+    .MobileNavigationToggle {
+        display: block;
+        cursor: pointer;
+        background: transparent;
+        box-shadow: none;
+        border: 0;
+    }
+    .MobileNavigationToggle .fa {
+        font-size: 25px;
+        color: #fff;
+    }
+    .DesktopNavigationMenu {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 1103px) {
+    .bottomCtaMain-wrapper .bottomcharacter-img {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 938px) {
+    .HeroMain-wrapper h1 {
+        font-size: 45px;
+    }
+    .featuresMain-wrapper h3 {
+        font-size: 26px;
+        line-height: 1.4em;
+    }
+    .featuresMain-wrapper .featuresSubHeading {
+        font-size: 16px;
+    }
+    .FeaturesTestimonialBox p {
+        font-size: 15px;
+    }
+    .InsightMainBox-wrapper h2 {
+        font-size: 32px;
+        line-height: 1.4em;
+    }
+    .InsightMainBox-wrapper .InsightMainBoxs-container {
+        padding-top: 2em;
+        grid-template-columns: 1fr;
+    }
+
+    .ClientTestimonial-info h5 {
+        font-size: 21px;
+    }
+    .ClientTestimonial-info {
+        max-width: 400px;
+    }
+    .ClientTestimonial-info span {
+        font-size: 18px;
+        margin-top: 3em;
+    }
+    .bottomCtaMain-wrapper h3 {
+        font-size: 32px;
+    }
+    footer .footerLinksBox {
+        display: flex;
+        gap: 25px;
+        flex-direction: column-reverse;
+    }
+    footer .footerLinksBox hr {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 810px) {
+    .HeroMain-wrapper {
+        padding: 50px 0px 80px 0px;
+    }
+    .HeroMain-wrapper h1 {
+        font-size: 42px;
+        line-height: normal;
+    }
+    .HeroMain-wrapper h1 br {
+        display: none;
+    }
+    .HeroMain-wrapper p {
+        font-size: 16px;
+    }
+    .HeroMain-wrapper p strong {
+        font-size: 16px;
+    }
+    .HeroMain-wrapper .heroMediaBox {
+        padding-top: 3em;
+    }
+    .TrustBadgeMain-wrapper .container {
+        padding: 45px 20px;
+    }
+    .TrustBadgeMain-wrapper p {
+        gap: 15px;
+    }
+    .TrustBadgeMain-wrapper .trustbadgeLogoBox {
+        gap: 3em;
+        flex-wrap: wrap;
+    }
+    .TrustBadgeMain-wrapper {
+        padding: 50px 0px 20px 0px;
+    }
+    .featuresMain-wrapper .container {
+        grid-template-columns: 1fr;
+    }
+    .ClientTestimonial-info h5 {
+        font-size: 18px;
+    }
+    .ClientTestimonial-info .yellowQoute {
+        left: -38px;
+        width: 34px;
+    }
+    .ClientTestimonial-info span {
+        font-size: 16px;
+    }
+    .heroSignup-formBox form {
+        grid-template-columns: 1fr;
+    }
+    .heroSignup-formBox .heroFormInputBox span {
+        display: none;
+    }
+    .googleBtn-box .googleBtn {
+        gap: 4px;
+    }
+    .heroTrustBox-main {
+        gap: 15px;
+        margin-top: 2em;
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    .ClientTestimonial-containerBox {
+        grid-template-columns: 1fr;
+    }
+    .ClientTestimonial-containerBox .clientInfobox {
+        text-align: right;
+    }
+
+    .ClientTestimonial-containerBox-main {
+        padding: 0px 10px;
+    }
+    .ClientTestimonial-media {
+        max-width: none;
+    }
+
+    .banner-form-container .email-section {
+        gap: 0;
+    }
+}
+
+@media only screen and (max-width: 630px) {
+    .HeroMain-wrapper {
+        padding-bottom: 0px !important;
+    }
+    .HeroMain-wrapper h1 {
+        font-size: 33px;
+    }
+    .heroMediaBox .heroMainInfo-img {
+        width: 90%;
+    }
+    .HeroMain-wrapper .heroMediaBox {
+        padding-top: 2em;
+    }
+    .HeroMain-wrapper {
+        padding: 50px 0px;
+    }
+    .bottomCtaMain-wrapper h3,
+    .InsightMainBox-wrapper h2 {
+        font-size: 30px;
+        line-height: 1.4em;
+    }
+    .InsightMainBox-wrapper h2 br {
+        display: none;
+    }
+    .TrustBadgeMain-wrapper h2 {
+        line-height: 1.4em;
+    }
+    .TrustBadgeMain-wrapper p {
+        display: flex;
+        flex-direction: column;
+    }
+    .TrustBadgeMain-wrapper .trustbadgeLogoBox {
+        gap: 20px;
+        margin-top: 2em;
+    }
+    .featuresMain-wrapper .container {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .InsightMainBox-wrapper {
+        padding: 50px 0px;
+    }
+    .InsightMainBox-wrapper .InsightMainBoxs-container {
+        grid-template-columns: 1fr;
+    }
+    /* .InsightMainBox-wrapper .InsightBox{
+        height: 170px;
+    } */
+    .InsightMainBox-wrapper .insightBoxBtn-box {
+        padding-top: 2em;
+    }
+
+    .ClientTestimonial-containerBox {
+        gap: 30px;
+    }
+    .ClientTestimonial-info h5 {
+        font-size: 16px;
+        padding-left: 30px;
+    }
+    .ClientTestimonial-info span {
+        margin-top: 2em;
+    }
+    .ClientTestimonial-info .yellowQoute {
+        width: 32px;
+        left: 0;
+    }
+
+    .bottomCtaMain-wrapper h3 br {
+        display: none;
+    }
+    footer .footerLinksBox .footerLinks a {
+        font-size: 14px;
+    }
+    .faq-item .faq-question,
+    .faq-item .faq-answer p {
+        font-size: 16px;
+    }
+    .faq-item .faq-answer p {
+        font-size: 14px;
+    }
+}
+
+.tour-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent black */
+    z-index: 9998;
+    /* Lower than Shepherd tour element */
+    pointer-events: all;
+}
+
+.shepherd-element {
+    z-index: 9999 !important;
+    /* Ensure tour elements are above the overlay */
+}
+
+@keyframes scale-in {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-scale-in {
+    animation: scale-in 0.3s ease-out forwards;
+}
+
+.InsightBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* ya space-between for even spacing */
+    min-height: 370px; /* jitna aapko chahiye, sab box same height */
+    padding: 24px 12px;
+    box-sizing: border-box;
+}
+
+.InsightBox img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.InsightBox h4,
+.InsightBox p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.modal-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+}
+
+.swiper-wrapper {
+  display: grid !important;
+  grid-auto-flow: column;
+  align-items: stretch;
+}

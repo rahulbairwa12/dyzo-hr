@@ -1,0 +1,520 @@
+[
+  {
+    "version": "1.1.2",
+    "date": "2025-11-13",
+    "bugFixes": [
+      {
+        "title": "Header Task Creation → Status Change Issue",
+        "description": "Resolved the issue where the task status was automatically changing after reopening the task panel. Now the status remains consistent."
+      },
+      {
+        "title": "Invite User → Invitation Not Appearing Instantly",
+        "description": "After sending an invitation, the user request now appears immediately in the list without requiring a manual refresh."
+      },
+      {
+        "title": "My Tasks & Dashboard → Assignee Removal Issue",
+        "description": "When removing a user from the task panel, the change is now instantly reflected in both the My Tasks and Dashboard task tables."
+      },
+      {
+        "title": "Reports → Feedback Fixes",
+        "description": "All pending report-related feedbacks have been addressed, including layout, filters, and UI corrections for smoother performance."
+      }
+    ],
+    "improvements": [
+      {
+        "title": "Activity Tab → Improvements",
+        "description": "The Activity Tab has been improved — logs are now displayed properly without underscores, and project activities are easier to read and understand."
+      },
+      {
+        "title": "Improvements in User Profile Section",
+        "description": "The User Profile section has been redesigned with an improved layout, better organization of user information, and enhanced user experience for profile management."
+      },
+      {
+        "title": "Removed Debouncing from All Modules",
+        "description": "Debouncing has been removed from all modules so that actions happen faster and issues caused by delays are avoided."
+      },
+      {
+        "title": "Invite User → Removed Workspace Option",
+        "description": "The Workspace option has been removed from the Invite User flow to make it simpler and to prevent users from being added to \"My Workspace\" by mistake. This also allows users to create personal tasks without seeing any other users."
+      },
+      {
+        "title": "Project Edit → Remove Add Member Option",
+        "description": "The \"Add Member\" option in Edit Project has been removed to prevent adding users to \"My Workspace Project.\" This ensures that users can create personal tasks without viewing other users in the workspace."
+      },
+      {
+        "title": "All Projects → Redirect to Project Members Tab",
+        "description": "When clicking on profile icons under the \"All Projects\" section, users will now be redirected directly to the Project Members tab instead of the Overview tab for quick access to member management."
+      },
+      {
+        "title": "Develop Desktop App → Download App Page Created",
+        "description": "A dedicated Download App page has been developed for the Dyzo Desktop App, allowing users to easily download and install it from the website."
+      },
+      {
+        "title": "Project Task Table → Filtered List Behavior Improved",
+        "description": "When a task's status is changed, it will now automatically disappear from the filtered list, ensuring an accurate and dynamic view of filtered tasks."
+      },
+      {
+        "title": "TBD – Sync All Platforms (Web / Extension / App / Desktop)",
+        "description": "All features across different Dyzo platforms — Website, Extension, Mobile App, and Desktop App — are being synchronized to maintain uniform functionality and consistent behavior."
+      },
+      {
+        "title": "Duplicate Project Creation → Correct Task ID Format",
+        "description": "When creating a duplicate of any project, tasks under it will now be generated correctly using the format DO-1, DO-2, DO-3, etc., maintaining proper task sequence and structure."
+      },
+      {
+        "title": "Pipeline → Added \"Analytics\" Tab",
+        "description": "A new Analytics tab has been added to the Pipeline section, allowing users to view and analyze attached reports separately for better insights."
+      },
+      {
+        "title": "Section Task → Handle Task Permission & Access Level",
+        "description": "Enhanced permission control for section-level tasks to ensure only authorized users can perform specific task-related actions."
+      },
+      {
+        "title": "Project Assignment → Notification to Assigned User",
+        "description": "When a user is assigned to a project, they now receive an automatic notification, ensuring they are immediately informed about new project allocations."
+      },
+      {
+        "title": "SOPs to be Added to Dyzo",
+        "description": "SOPs (Standard Operating Procedures) will be integrated into Dyzo as per the list to be provided by CG for better process standardization."
+      }
+    ],
+    "features": []
+  },
+  {
+    "version": "1.1.1",
+    "date": "2025-11-05",
+    "bugFixes": [
+      {
+        "title": "Comment Dropdown → Overlap Issue Fixed",
+        "description": "Comment dropdowns no longer overlap other UI elements."
+      },
+      {
+        "title": "Dashboard → Task Panel → Assigned Users Removed Issue",
+        "description": "Assigned users now remain visible even after closing and reopening the assignee list in the Task Panel."
+      },
+      {
+        "title": "My Tasks → Text Edit Not Saving",
+        "description": "Typing text after existing content and clicking outside now saves the changes properly."
+      },
+      {
+        "title": "Project Task Table → Section Task Count Auto-Update",
+        "description": "The task count in a section updates immediately after creating a new task — no refresh needed."
+      },
+      {
+        "title": "Moving Tasks Between Sections → Double Success Message",
+        "description": "Now only one success message appears when moving tasks from one section to another."
+      },
+      {
+        "title": "Project Task Table → Manual Time Entry Not Updating",
+        "description": "When time is added manually, it updates instantly without requiring a page refresh."
+      },
+      {
+        "title": "Inbox → Unread Count Issue",
+        "description": "Unread notification count now clears automatically once all notifications are read."
+      },
+      {
+        "title": "Project Members Tab → Member Save Issue",
+        "description": "Members added to a project remain saved even after switching to another tab."
+      },
+      {
+        "title": "Export Project → Removed Unnecessary Fields",
+        "description": "Exported project files now include only essential fields, improving file readability."
+      },
+      {
+        "title": "Reply Comment Box → Cursor Disappear Issue",
+        "description": "The cursor remains visible after pasting a comment link in the reply box."
+      }
+    ],
+    "improvements": [
+      {
+        "title": "Inbox → Categorization of Notifications",
+        "description": "Notifications in the Inbox are now categorized for better clarity and easy tracking."
+      },
+      {
+        "title": "Edit Comment → Mention Improvement",
+        "description": "While editing comments, the mention feature now works smoothly, showing accurate user suggestions."
+      },
+      {
+        "title": "Add Time Log & Timesheet Timer → Improved Format",
+        "description": "The time log and timer display have been enhanced for better readability and time-tracking accuracy."
+      },
+      {
+        "title": "Company Working Hours API → Added Daily Working Hours Breakdown",
+        "description": "The API now provides a date-wise (daily) breakdown of working hours for detailed reporting and analysis."
+      },
+      {
+        "title": "Browser Tab → Show Project Name on Change",
+        "description": "The browser tab now updates dynamically to display the current project name when switching projects."
+      },
+      {
+        "title": "Timesheet Report → Added Copy Icon for Task Name",
+        "description": "A copy icon is added beside each task name in the Timesheet Report, making it easy to copy task titles directly."
+      },
+      {
+        "title": "Section → Collapsed State with + Icon",
+        "description": "When a section is collapsed, a + icon appears. Clicking it expands the section and opens a blank row to quickly add a new task."
+      },
+      {
+        "title": "Project Progress Calculation Updated",
+        "description": "The calculation for project progress has been refined to reflect more accurate completion percentages."
+      },
+      {
+        "title": "Allow Project Creation for All User Types",
+        "description": "All user types can now create projects without any restrictions."
+      },
+      {
+        "title": "User Deletion → Confirmation & (Deleted) Tag Display",
+        "description": "Before deleting a user, a warning confirmation appears. Once deleted, the user is shown as User (deleted) under Comments, Notes, and Project Overview to maintain history."
+      },
+      {
+        "title": "All Projects → Hover on Profile Icons to Show Assigned Users",
+        "description": "Hovering over profile icons in the \"All Projects\" section now displays the names of the users assigned to that project."
+      },
+      {
+        "title": "Add User Option → Improved Flow",
+        "description": "If a member is missing from a project in the My Tasks assignee dropdown, an Add Member option appears. Clicking it redirects to the Project Members tab for that project, where users can directly invite new members using the Invite User option."
+      }
+    ],
+    "features": []
+  },
+  {
+    "version": "1.1.0",
+    "date": "2025-10-17",
+    "bugFixes": [
+      {
+        "title": "Correct Task ID in Trash",
+        "description": "Task IDs now show correctly in the trash, making it easy to identify deleted tasks and maintain proper task tracking."
+      },
+      {
+        "title": "Trash Pagination – Last Page Issue",
+        "description": "Fixed pagination issue where the last page incorrectly showed 'No deleted tasks found.' Pagination now works smoothly across all pages."
+      },
+      {
+        "title": "New Project Member not showing on Dashboard",
+        "description": "Resolved issue where newly added project members were not immediately visible on the dashboard. Members now appear instantly after being added."
+      },
+      {
+        "title": "Dashboard → Projects → Members redirection",
+        "description": "Fixed navigation issue where clicking on Members from the Projects section now correctly redirects to the Members tab for the selected project."
+      },
+      {
+        "title": "Signup page feedbacks fixed",
+        "description": "Resolved validation and design issues on the signup page, improving user experience and form functionality."
+      },
+      {
+        "title": "Login page feedbacks fixed",
+        "description": "Fixed layout and input validation issues on the login page, enhancing user authentication experience."
+      },
+      {
+        "title": "Project Task Table → Searched tasks not showing after reset",
+        "description": "Fixed issue where previously searched tasks were not appearing after resetting filters. Search functionality now works correctly."
+      },
+      {
+        "title": "Returning to Assignee list after search",
+        "description": "Resolved issue where returning to the full assignee list after a search was not reloading correctly. Navigation now works smoothly."
+      },
+      {
+        "title": "Tooltip on Add Project page",
+        "description": "Fixed tooltip positioning issue on the Add Project page, ensuring proper guidance and user assistance."
+      },
+      {
+        "title": "Cursor jump issue while typing",
+        "description": "Resolved cursor positioning problem where typing would cause the cursor to jump to the end of the text, improving text editing experience."
+      },
+      {
+        "title": "Numbering issue in task description",
+        "description": "Fixed numbered and bulleted list functionality in task descriptions, ensuring proper formatting when adding or deleting list items."
+      },
+      {
+        "title": "Inbox → Unread messages",
+        "description": "Fixed message management where read messages now automatically move from Unread to All messages section."
+      },
+      {
+        "title": "Changing Assignee in Project Task Table",
+        "description": "Resolved issue where assignee changes in the Project Task Table were not immediately visible. New assignees now show instantly."
+      },
+      {
+        "title": "Cursor disappearing after pasting a link",
+        "description": "Fixed cursor visibility issue that occurred after pasting links in task descriptions, ensuring proper text editing experience."
+      },
+      {
+        "title": "Project details not saved in logs",
+        "description": "Resolved logging issue where project details were not being properly stored in project logs, ensuring complete audit trail."
+      },
+
+      {
+        "title": "Different status in Task Table and Task Panel",
+        "description": "Resolved status inconsistency between Task Table and Task Panel, ensuring uniform status display across all interfaces."
+      },
+      {
+        "title": "Creating a task in Project module",
+        "description": "Fixed issue where assigning users while creating a task in the Project module was not working correctly."
+      },
+      {
+        "title": "Reports → Module closes after switching",
+        "description": "Resolved issue where switching between Reports and Timesheet Reports was incorrectly closing the module."
+      },
+      {
+        "title": "AI Assistant → Profile options issue fixed",
+        "description": "Fixed issue where opening AI Assistant was hiding profile options. Both features now work properly together."
+      }
+    ],
+    "improvements": [
+      {
+        "title": "Dashboard → My Tasks → Maximize name space",
+        "description": "Enhanced task name display in My Tasks to use more space, ensuring long task names are fully visible without truncation."
+      },
+      {
+        "title": "Subscription Management → Updated date format",
+        "description": "Standardized date format to DD/MM/YYYY (e.g., 16/10/2025) across all subscription management interfaces for consistency."
+      },
+      {
+        "title": "Project Task Table → Sorting for time added",
+        "description": "Added sorting functionality for time columns in Project Task Table, allowing users to easily view tasks in chronological order."
+      },
+      {
+        "title": "My Tasks → Header stays fixed while scrolling",
+        "description": "Implemented sticky header functionality in My Tasks, keeping column headers visible while scrolling for better navigation."
+      },
+      {
+        "title": "Profile → Get Support → Business WhatsApp with automated chat",
+        "description": "Integrated official Business WhatsApp support with automated replies for faster and more efficient customer support."
+      },
+      {
+        "title": "Subscription → Manage Plan → New design applied",
+        "description": "Redesigned the Manage Plan interface with a cleaner layout for better understanding and easier plan management."
+      },
+      {
+        "title": "Resize to fit screen size",
+        "description": "Implemented responsive design that automatically adjusts the interface to different device sizes (mobile, tablet, desktop) for optimal viewing."
+      },
+      {
+        "title": "Content updated with 'Free'",
+        "description": "Enhanced clarity by clearly labeling free plans and features as 'Free' throughout the application."
+      },
+      {
+        "title": "Settings → Subscription → Content updated",
+        "description": "Revised descriptions and labels in subscription settings for improved clarity and easier understanding."
+      },
+      {
+        "title": "Rename Designation → Role",
+        "description": "Updated terminology from 'Designation' to 'Role' throughout the application for better clarity and consistency."
+      },
+      {
+        "title": "Release logs for every sprint",
+        "description": "Implemented automatic creation of release logs for each sprint, maintaining a clear record of all updates and changes."
+      },
+      {
+        "title": "Trash Page → Added search bar",
+        "description": "Added search functionality to the Trash page, allowing users to quickly find deleted tasks without scrolling through multiple pages."
+      },
+      {
+        "title": "Assignee display based on selected Project",
+        "description": "Improved assignee visibility logic to show only relevant assignees based on the selected project, ensuring accurate task assignment."
+      },
+      {
+        "title": "Rename to Import Task",
+        "description": "Updated label from 'Import' to 'Import Task' for better clarity about the functionality being specifically for importing task details."
+      },
+      {
+        "title": "My Tasks → Multiple task update (Assignee and Project)",
+        "description": "Enhanced bulk task update functionality allowing users to update both Assignee and Project for multiple tasks simultaneously with proper status handling."
+      },
+      {
+        "title": "Footer → Blog integrated under Learn",
+        "description": "Integrated Blog section under the Learn menu in the footer, providing quick access to articles, product updates, and learning content."
+      },
+      {
+        "title": "Reports → Merge Timesheet Report and Project Report",
+        "description": "Consolidated Timesheet Report and Project Report into a unified section for easier access to all related information in one place."
+      },
+      {
+        "title": "Reports → Project Reports improvement",
+        "description": "Enhanced Project Reports with cleaner layout and improved data presentation for easier reading and analysis."
+      },
+      {
+        "title": "Timesheet Reports → New design implemented",
+        "description": "Implemented new structured and clean design for Timesheet Reports, improving readability and user experience."
+      },
+      {
+        "title": "Landing Page → Full image view for each section",
+        "description": "Updated landing page to display complete images without cropping, enhancing visual appeal and better showcasing features."
+      },
+      {
+        "title": "Project → Add Members → Invite email visibility",
+        "description": "Improved member invitation process with proper email display and smoother invitation workflow when adding new project members."
+      },
+      {
+        "title": "Pipeline → Dashboard → Option to hide projects",
+        "description": "Added functionality to hide unnecessary projects from the Pipeline Dashboard, keeping the interface clean and focused on relevant projects."
+      }
+    ],
+    "features": []
+  },
+  {
+    "version": "1.0.0",
+    "date": "2025-10-09",
+    "bugFixes": [
+      {
+        "title": "Fix export CSV feedback",
+        "description": "Resolved issues with CSV export functionality, ensuring proper data formatting, correct field mapping, and reliable export process for all report types."
+      },
+      {
+        "title": "Signup page feedbacks",
+        "description": "Fixed various user experience issues on the signup page including form validation errors, loading states, and error message display for better user onboarding."
+      },
+      {
+        "title": "Login page feedbacks",
+        "description": "Addressed login page issues including authentication error handling, password visibility toggle, and improved error messaging for better user experience."
+      },
+      {
+        "title": "Multiple task update: assignee changes keep project fixed and disable status",
+        "description": "Fixed bulk task update functionality to properly maintain project assignments and correctly handle status changes when updating multiple tasks simultaneously."
+      },
+      {
+        "title": "Unread message notification shows 'You have three unread messages'",
+        "description": "Corrected notification text to display proper count and formatting for unread messages, improving communication clarity for users."
+      },
+      {
+        "title": "Incorrect comment notification",
+        "description": "Fixed comment notification system to ensure accurate delivery, proper formatting, and correct recipient targeting for better team communication."
+      },
+      {
+        "title": "Attaching image in comment then mentioning user moves cursor to next line",
+        "description": "Resolved cursor positioning issue when attaching images and mentioning users in comments, ensuring proper text flow and user experience."
+      },
+      {
+        "title": "Previously searched tasks not showing automatically after reset",
+        "description": "Fixed search functionality to properly restore previously searched tasks after reset, maintaining user workflow continuity."
+      },
+      {
+        "title": "Assignee search resets correctly after adding",
+        "description": "Improved assignee search behavior to properly reset and clear search state after successfully adding a new assignee to tasks."
+      },
+      {
+        "title": "Tooltip of project dropdown fixed on Add Project page",
+        "description": "Corrected tooltip positioning and content display for project dropdown on the Add Project page, improving user guidance and interface clarity."
+      },
+      {
+        "title": "Cursor jump issue while typing in task creation fixed",
+        "description": "Resolved cursor positioning problems during task creation, ensuring smooth text input and proper cursor behavior throughout the creation process."
+      },
+      {
+        "title": "Task count updates correctly when sections closed",
+        "description": "Fixed task counter synchronization to accurately reflect changes when project sections are collapsed or expanded, maintaining accurate task counts."
+      },
+      {
+        "title": "Removed user no longer appears after assignee change until refresh",
+        "description": "Improved user interface updates to immediately reflect assignee changes without requiring page refresh, providing real-time feedback to users."
+      },
+      {
+        "title": "Task description paste link cursor disappearance fixed",
+        "description": "Resolved cursor visibility issue when pasting links in task descriptions, ensuring proper text editing experience and cursor positioning."
+      },
+      {
+        "title": "Reports → Clicking Timesheet closes module issue fixed",
+        "description": "Fixed module closing behavior in Reports section when clicking on Timesheet, ensuring proper navigation and module state management."
+      },
+      {
+        "title": "Numbered list backspace issue resolved",
+        "description": "Corrected backspace behavior in numbered lists within task descriptions, ensuring proper list formatting and text editing functionality."
+      },
+      {
+        "title": "Inbox unread messages now move correctly and update count",
+        "description": "Fixed inbox message management to properly handle unread message movement and accurate count updates for better message organization."
+      },
+      {
+        "title": "Status naming consistency fixed between table and panel",
+        "description": "Ensured consistent status naming and display across different interface components, reducing confusion and improving user experience."
+      },
+      {
+        "title": "Arrow key selection in assignee dropdown fixed",
+        "description": "Improved keyboard navigation in assignee dropdown with proper arrow key functionality for better accessibility and user experience."
+      },
+      {
+        "title": "Search filter resets properly after clearing",
+        "description": "Fixed search filter behavior to properly reset all applied filters when clearing search, ensuring clean search state management."
+      },
+      {
+        "title": "Project creation logs during onboarding saved properly",
+        "description": "Resolved logging issues during project creation in the onboarding process, ensuring proper audit trail and data persistence."
+      }
+    ],
+    "improvements": [
+      {
+        "title": "Blog integrated under Learn (footer)",
+        "description": "Added a dedicated blog section under the Learn menu in the footer, providing users with access to tutorials, tips, and updates about Dyzo features and best practices."
+      },
+      {
+        "title": "Timesheet and Project reports merged",
+        "description": "Consolidated timesheet and project reporting into a unified interface, reducing navigation complexity and providing a more comprehensive view of project progress and time allocation."
+      },
+      {
+        "title": "Improved Reports → Project Reports performance",
+        "description": "Optimized the Project Reports module with faster data loading, improved query performance, and better caching mechanisms for handling large datasets efficiently."
+      },
+      {
+        "title": "Enhanced Reports → Timesheet module",
+        "description": "Upgraded the Timesheet module with better filtering options, improved data visualization, enhanced export capabilities, and more intuitive user interface for better time tracking insights."
+      },
+      {
+        "title": "Landing page images show complete view per section",
+        "description": "Redesigned landing page image display to show complete views of each section, providing better visual representation of Dyzo's capabilities and improving user understanding."
+      },
+      {
+        "title": "Add Members → Invite button pre-fills email address",
+        "description": "Enhanced the member invitation process by automatically pre-filling email addresses when available, streamlining the team expansion workflow and reducing manual input."
+      },
+      {
+        "title": "Account creation and signup flow refined",
+        "description": "Improved the account creation process with better form validation, clearer error messages, and a more intuitive step-by-step flow for new user onboarding."
+      },
+      {
+        "title": "Pipeline Dashboard → Option to hide unnecessary projects",
+        "description": "Added functionality to hide projects that are not currently relevant from the Pipeline Dashboard, allowing users to focus on active projects and reduce visual clutter."
+      },
+      {
+        "title": "Add/Remove Assignee UX improved across Task Panel and Project Table",
+        "description": "Enhanced the assignee management interface with better visual feedback, improved drag-and-drop functionality, and more intuitive controls for assigning and removing team members from tasks."
+      },
+      {
+        "title": "Project-based Assignee visibility logic improved",
+        "description": "Refined the logic for showing assignees based on project context, ensuring users only see relevant team members and reducing confusion in multi-project environments."
+      }
+    ],
+    "features": [
+      {
+        "title": "Developer API for third-party Dyzo integrations",
+        "description": "Introducing a comprehensive REST API that allows third-party developers to integrate Dyzo with their applications. Features include task management, project operations, user authentication, and real-time webhooks for seamless integration."
+      },
+      {
+        "title": "New design for Signup & Login pages",
+        "description": "Completely redesigned authentication pages with modern UI/UX, improved accessibility, better error handling, and enhanced security features. The new design provides a smoother onboarding experience for new users."
+      },
+      {
+        "title": "New design for Timesheet Reports",
+        "description": "Redesigned timesheet reporting interface with better data visualization, improved filtering options, enhanced export capabilities, and more intuitive navigation for better time tracking insights."
+      },
+      {
+        "title": "Tasks created from header now go to My Tasks and Untitled Project",
+        "description": "Streamlined task creation workflow where tasks created from the header are automatically assigned to 'My Tasks' and placed in an 'Untitled Project' for better organization and immediate access."
+      },
+      {
+        "title": "User deletion confirmation with 'User (deleted)' fallback in comments/notes",
+        "description": "Enhanced user management with proper deletion confirmation dialogs and graceful handling of deleted users in comments and notes, maintaining data integrity while preserving historical context."
+      },
+      {
+        "title": "Dashboard → Projects → Members click redirects correctly to Members tab",
+        "description": "Fixed navigation issue where clicking on Members from the Projects section now correctly redirects to the Members tab, improving user experience and navigation consistency."
+      },
+      {
+        "title": "Version history logging for Dyzo Website with dates",
+        "description": "Implemented comprehensive version tracking system that logs all changes to the Dyzo website with timestamps, providing better audit trails and change management capabilities."
+      },
+      {
+        "title": "Implemented Anusha's feedback for Dyzo AI Chat Assistant",
+        "description": "Enhanced the AI Chat Assistant based on user feedback, including improved response accuracy, better context understanding, and more natural conversation flow for better user interaction."
+      }
+    ]
+  }
+]

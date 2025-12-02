@@ -1,0 +1,146 @@
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar {
+  background: #1e293b;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+}
+.dark * {
+  scrollbar-color: #334155 #1e293b;
+}
+
+/* For MyTasks scroll area (max-h-[352px] and overflow-y-auto) */
+.max-h-\[352px\].overflow-y-auto::-webkit-scrollbar {
+  width: 8px;
+}
+.max-h-\[352px\].overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 8px;
+}
+.max-h-\[352px\].overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.dark .max-h-\[352px\].overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark .max-h-\[352px\].overflow-y-auto::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+.tf-editor-container {
+  border: 1px solid #E1E1E1;
+  border-radius: 0.5rem;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+}
+.tf-editor-area{
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+}
+/* .comment-editor-area .tf-editor-area{
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  max-height: 100px; 
+  height: 100px; 
+  overflow-y: auto;
+  min-height: 100px;
+} */
+
+.comment-editor-area .tf-editor-area {
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+
+  min-height: 100px;   /* Start height */
+  max-height: 300px;   /* Don’t grow beyond 300px */
+  height: auto;        /* Let content define height */
+  overflow-y: auto;    /* Scroll when it exceeds max */
+  resize: none;        /* Prevent manual resize (optional) */
+}
+
+.tf-toolbar{
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.tf-object-cover{
+  width: 100%;
+  height: 100%;
+}
+button[aria-label="Enter Fullscreen"] {
+  display: none !important;
+}
+
+.bg-dededed {
+  background-color: #E8E5F9 !important;
+}
+.border-e1e1e1 {
+  border-left: 4px solid #e1e1e1 !important;
+}
+
+/* Notification animations */
+@keyframes notifyPop {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(239, 68, 68, 0.0); }
+  15% { transform: scale(1.4); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0.20); }
+  35% { transform: scale(0.9); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.16); }
+  55% { transform: scale(1.18); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.12); }
+  75% { transform: scale(0.96); box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.10); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(239, 68, 68, 0.0); }
+}
+.notify-pop { animation: notifyPop 900ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+@keyframes bellWiggle {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(-18deg); }
+  30% { transform: rotate(14deg); }
+  45% { transform: rotate(-10deg); }
+  60% { transform: rotate(6deg); }
+  75% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+.notify-bell-pop { animation: bellWiggle 900ms ease-out; transform-origin: 50% 0%; }
+
+
+@keyframes dotsMove {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 20px 10px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.animate-dots {
+  animation: dotsMove 8s ease-in-out infinite;
+}
