@@ -37,8 +37,8 @@ const AssignToSelect = ({ task, users, index, userId, updateExistingTask, isComp
 
   // Django live reporting data
   const [djangoData, setDjangoData] = useState([]);
-  // Firebase logs data
-  const [firebaseLogs, setFirebaseLogs] = useState({});
+
+
 
   const searchRef = useRef(null);
   const selectRef = useRef(null);
@@ -60,20 +60,20 @@ const AssignToSelect = ({ task, users, index, userId, updateExistingTask, isComp
 
   // ------------------------------
   // 2) Subscribe to Firebase logs
- 
+
 
   // ------------------------------
   // 3) If userId changes, find that employee
   // ------------------------------
   useEffect(() => {
-   
+
     // Find the user in the users array
     const found = users.find((u) => u._id === userId);
-  
-    
+
+
     // Update the selected employee state
     setSelectedEmployee(found || null);
-    
+
   }, [userId, users]);
 
   // ------------------------------
@@ -102,13 +102,13 @@ const AssignToSelect = ({ task, users, index, userId, updateExistingTask, isComp
   // ------------------------------
   // 6) Combine each user with Django + Firebase
   // ------------------------------
-  const mergedUsers = users.map((usr) => combineEmployeeData(usr, djangoData, firebaseLogs));
+  const mergedUsers = users.map((usr) => combineEmployeeData(usr, djangoData));
 
   // The currently selected user, merged
   const mergedSelected = selectedEmployee
-    ? combineEmployeeData(selectedEmployee, djangoData, firebaseLogs)
+    ? combineEmployeeData(selectedEmployee, djangoData)
     : null;
- 
+
 
   // Derive the final status string for the selected employee
   const selectedStatusString = mergedSelected ? getLiveStatus(mergedSelected) : "Offline";
@@ -137,21 +137,21 @@ const AssignToSelect = ({ task, users, index, userId, updateExistingTask, isComp
   // 8) Select user from the dropdown
   // ------------------------------
   const handleSelect = (employee) => {
- 
-    
+
+
     setSearchTerm("");
     setShowSearch(false);
-    
+
     // Create a copy of the task to work with
-    const updatedTask = { 
+    const updatedTask = {
       ...task,
       userId: employee.value // Update the userId property
     };
-    
-  
-    
+
+
+
     setSelectedEmployee(employee);
-    
+
     // Call the update function with the updated task
     if (typeof updateExistingTask === 'function') {
       updateExistingTask(updatedTask, "userId");
@@ -183,7 +183,7 @@ const AssignToSelect = ({ task, users, index, userId, updateExistingTask, isComp
     <div className="block" key={`assignTo-${index}`}>
       <div className="relative" ref={searchRef}>
         {/* Selected Employee Display */}
-        <div 
+        <div
           className="flex px-1 relative"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -213,43 +213,43 @@ const AssignToSelect = ({ task, users, index, userId, updateExistingTask, isComp
               <div className="w-[32px] h-[32px] flex items-center justify-center">
                 <div className={`flex items-center sm:px-[16px] sm:py-[16px] px-1 py-1 justify-center w-[30px] h-[30px] rounded-full bg-slate-200 dark:bg-slate-600 ${isCompleted ? "opacity-60" : ""}`}>
                   <span className="text-sm">{mergedSelected && (
-                    mergedSelected.first_name && mergedSelected.last_name ? 
-                      `${mergedSelected.first_name[0]?.toUpperCase()}${mergedSelected.last_name[0]?.toUpperCase()}` : 
-                    mergedSelected.name ? 
-                      mergedSelected.name.split(" ").length > 1 ? 
-                        `${mergedSelected.name.split(" ")[0][0]?.toUpperCase()}${mergedSelected.name.split(" ")[1][0]?.toUpperCase()}` : 
-                        `${mergedSelected.name[0]?.toUpperCase()}` : 
-                      "U"
+                    mergedSelected.first_name && mergedSelected.last_name ?
+                      `${mergedSelected.first_name[0]?.toUpperCase()}${mergedSelected.last_name[0]?.toUpperCase()}` :
+                      mergedSelected.name ?
+                        mergedSelected.name.split(" ").length > 1 ?
+                          `${mergedSelected.name.split(" ")[0][0]?.toUpperCase()}${mergedSelected.name.split(" ")[1][0]?.toUpperCase()}` :
+                          `${mergedSelected.name[0]?.toUpperCase()}` :
+                        "U"
                   )}</span>
                 </div>
               </div>
             )}
-            
+
             {/* Profile Hover Card */}
             {showHoverCard && mergedSelected && avatarRef.current && createPortal(
               <div className="fixed z-[9999]"
-              style={{
-                top: avatarRef.current.getBoundingClientRect().top - 10,
-                left: avatarRef.current.getBoundingClientRect().right + 10,
-              }}>
-              <ProfileHoverCard 
-                user={{
-                  _id: mergedSelected.value || mergedSelected._id,
-                  name: mergedSelected.name,
-                  profilePic: mergedSelected.image,
-                  role: mergedSelected.designation || "User",
-                  email: mergedSelected.email,
-                  department: mergedSelected.department,
-                  jobTitle: mergedSelected.designation,
-                  phone: mergedSelected.phone,
-                  user_type: mergedSelected.user_type,
-                  isAdmin: mergedSelected.isAdmin,
-                  team_leader: mergedSelected.team_leader
-                }}
-                isCompleted={isCompleted}
-              />
-               </div>,
-               document.body
+                style={{
+                  top: avatarRef.current.getBoundingClientRect().top - 10,
+                  left: avatarRef.current.getBoundingClientRect().right + 10,
+                }}>
+                <ProfileHoverCard
+                  user={{
+                    _id: mergedSelected.value || mergedSelected._id,
+                    name: mergedSelected.name,
+                    profilePic: mergedSelected.image,
+                    role: mergedSelected.designation || "User",
+                    email: mergedSelected.email,
+                    department: mergedSelected.department,
+                    jobTitle: mergedSelected.designation,
+                    phone: mergedSelected.phone,
+                    user_type: mergedSelected.user_type,
+                    isAdmin: mergedSelected.isAdmin,
+                    team_leader: mergedSelected.team_leader
+                  }}
+                  isCompleted={isCompleted}
+                />
+              </div>,
+              document.body
             )}
           </span>
         </div>
@@ -298,13 +298,13 @@ const AssignToSelect = ({ task, users, index, userId, updateExistingTask, isComp
                           />
                         ) : (
                           <p className="w-8 h-8 rounded-full border text-f13 flex justify-center items-center font-semibold bg-slate-200 text-[14px]">
-                            {employee.first_name && employee.last_name ? 
-                              `${employee.first_name[0]?.toUpperCase()}${employee.last_name[0]?.toUpperCase()}` : 
-                            employee.name ? 
-                              employee.name.split(" ").length > 1 ? 
-                                `${employee.name.split(" ")[0][0]?.toUpperCase()}${employee.name.split(" ")[1][0]?.toUpperCase()}` : 
-                                `${employee.name[0]?.toUpperCase()}` : 
-                              "U"}
+                            {employee.first_name && employee.last_name ?
+                              `${employee.first_name[0]?.toUpperCase()}${employee.last_name[0]?.toUpperCase()}` :
+                              employee.name ?
+                                employee.name.split(" ").length > 1 ?
+                                  `${employee.name.split(" ")[0][0]?.toUpperCase()}${employee.name.split(" ")[1][0]?.toUpperCase()}` :
+                                  `${employee.name[0]?.toUpperCase()}` :
+                                "U"}
                           </p>
                         )}
                         <div className="px-1 flex flex-col">
@@ -356,13 +356,13 @@ const AssignToSelect = ({ task, users, index, userId, updateExistingTask, isComp
                           />
                         ) : (
                           <p className="w-8 h-8 rounded-full border text-f13 flex justify-center items-center font-semibold bg-slate-200 text-[14px]">
-                            {employee.first_name && employee.last_name ? 
-                              `${employee.first_name[0]?.toUpperCase()}${employee.last_name[0]?.toUpperCase()}` : 
-                            employee.name ? 
-                              employee.name.split(" ").length > 1 ? 
-                                `${employee.name.split(" ")[0][0]?.toUpperCase()}${employee.name.split(" ")[1][0]?.toUpperCase()}` : 
-                                `${employee.name[0]?.toUpperCase()}` : 
-                              "U"}
+                            {employee.first_name && employee.last_name ?
+                              `${employee.first_name[0]?.toUpperCase()}${employee.last_name[0]?.toUpperCase()}` :
+                              employee.name ?
+                                employee.name.split(" ").length > 1 ?
+                                  `${employee.name.split(" ")[0][0]?.toUpperCase()}${employee.name.split(" ")[1][0]?.toUpperCase()}` :
+                                  `${employee.name[0]?.toUpperCase()}` :
+                                "U"}
                           </p>
                         )}
                         <div className="px-1 flex flex-col">

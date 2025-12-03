@@ -15,9 +15,9 @@ import dayjs from "dayjs";
 import Tooltip from "../../../ui/Tooltip";
 import { toast } from "react-toastify";
 
-// --- OPTIONAL: If you want real-time logs from Firebase ---
-import database from "@/firebase/index";
-import { ref, onValue, off } from "firebase/database";
+
+
+
 import useWidth from "@/hooks/useWidth";
 
 
@@ -100,8 +100,8 @@ const Profile = () => {
   const [selectedStatus, setSelectedStatus] = useState(userInfo?.status || "Offline");
   const [loading, setLoading] = useState(false);
 
-  // For "live" logs from Firebase (optional)
-  const [latestLog, setLatestLog] = useState(null);
+
+
 
   // Storage info for admin
   const [storage, setStorage] = useState({});
@@ -112,22 +112,22 @@ const Profile = () => {
   // Switch account modal
   const [showSwitchAccountModal, setShowSwitchAccountModal] = useState(false);
 
-  // 3) Subscribe to the user's latestLog from Firebase (if you want real-time)
-  useEffect(() => {
-    if (!userInfo?.companyId || !userInfo?._id) return;
-    const logsRef = ref(database, `taskLogs/${userInfo.companyId}/${userInfo._id}/latestLog`);
-    const unsub = onValue(logsRef, (snapshot) => {
-      if (snapshot.exists()) {
-        setLatestLog(snapshot.val());
-      } else {
-        setLatestLog(null);
-      }
-    });
-    return () => off(logsRef, "value", unsub);
-  }, [userInfo?.companyId, userInfo?._id]);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // 4) Final "live" status merges manual status + latestLog
-  const finalStatus = getLiveStatus(selectedStatus, latestLog);
+  const finalStatus = getLiveStatus(selectedStatus);
 
   /******************************************
    *  Logout Handler
@@ -209,6 +209,7 @@ const Profile = () => {
         response = await fetchPOST(`${djangoBaseURL}/api/google-userlogin/`, {
           body: { token: credentials, ...payload },
         });
+
       }
       if (response.status === 1) {
         toast.success(response.message);

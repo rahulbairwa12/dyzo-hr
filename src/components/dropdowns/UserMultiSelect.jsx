@@ -59,8 +59,8 @@ const UserMultiSelect = ({
 
   // Django live reporting data
   const [djangoData, setDjangoData] = useState([]);
-  // Firebase logs data
-  const [firebaseLogs, setFirebaseLogs] = useState({});
+
+
 
   const hoverTimeoutRef = useRef(null);
   const searchRef = useRef(null);
@@ -349,7 +349,7 @@ const UserMultiSelect = ({
   // 5) Combine each user with Django + Firebase data
   // ----------------------------
   const mergedUsers = users.map((usr) =>
-    combineEmployeeData(usr, djangoData, firebaseLogs)
+    combineEmployeeData(usr, djangoData)
   );
 
   // ----------------------------

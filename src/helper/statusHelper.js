@@ -2,8 +2,7 @@
 // statusHelper.js
 // ------------------------------------------------------------------
 
-import { ref, onValue, off } from "firebase/database";
-import database from "@/firebase/index"; // adjust to your firebase setup
+
 import { fetchPOST } from "@/store/api/apiSlice"; // or your own fetch method
 import { djangoBaseURL } from "@/helper"; // adjust as needed
 
@@ -40,7 +39,7 @@ function isToday(timestamp) {
 }
 
 /**
- * 3) Combine "manual" status from Django with "latestLog" from Firebase
+ * 3) Combine "manual" status from Django
  *    to derive a final "live" status string, e.g. "Active", "Away", "Offline", etc.
  */
 export function getLiveStatus(employee = {}) {
@@ -57,14 +56,14 @@ export function getLiveStatus(employee = {}) {
   ];
 
   const manualStatus = employee?.status; // from Django (or your DB)
-  const latestLog = employee?.latestLog; // from Firebase
-  const logStatus = latestLog?.status;   // boolean
-  const logTimestamp = latestLog?.timestamp;
+
+  // const logStatus = latestLog?.status;   // boolean
+  // const logTimestamp = latestLog?.timestamp;
 
   // 1) If actively tracking
-  if (logStatus === true) {
-    return "Active";
-  }
+  // if (logStatus === true) {
+  //   return "Active";
+  // }
 
   // 2) Else if there's a recognized manual status
   if (manualStatus && manualStatuses.includes(manualStatus)) {
@@ -72,9 +71,9 @@ export function getLiveStatus(employee = {}) {
   }
 
   // 3) If not active, check if they've worked today => "Away" or "Offline"
-  if (logStatus === false) {
-    return isToday(logTimestamp) ? "Away" : "Offline";
-  }
+  // if (logStatus === false) {
+  //   return isToday(logTimestamp) ? "Away" : "Offline";
+  // }
 
   // 4) Default
   return "Offline";
@@ -111,60 +110,15 @@ function debounce(func, wait) {
   };
 }
 
-/**
- * 5) Watch Firebase logs in real-time with debouncing to prevent excessive updates.
- *    Returns an unsubscribe function so you can stop listening when component unmounts.
- */
-/* export function watchFirebaseLogs(companyId, setFirebaseLogs) {
-  console.log("watchFirebaseLogs")
-  const logsRef = ref(database, `taskLogs/${companyId}`);
-  
-  // Create a debounced update function (500ms delay)
-  const debouncedUpdate = debounce((data) => {
-    setFirebaseLogs(data);
-  }, 5000);
-  
-  const listener = onValue(
-    logsRef,
-    (snapshot) => {
-      if (snapshot.exists()) {
-        // Use debounced update instead of direct update
-        debouncedUpdate(snapshot.val());
-      } else {
-        debouncedUpdate({});
-      }
-    },
-    (error) => {
-      console.error("Firebase error:", error);
-    }
-  );
-  
-  // Return unsub so you can call it in cleanup
-  return () => {
-    off(logsRef, "value", listener);
-  };
-} */
-
-/**
- * 6) Merge an employee with the data from Django & Firebase logs.
- *    - We match by user ID (emp._id).
- *    - We find manual status from the Django array (which might have "status", "start_time", etc.)
- *    - We find latestLog from firebaseData.
- *    - Return a combined object that includes "status" and "latestLog".
- */
-export function combineEmployeeData(emp, djangoData, firebaseData) {
+export function combineEmployeeData(emp, djangoData) {
   if (!emp) return null;
   // Find the matching Django record
   const djangoEmp = djangoData.find((d) => d.id === emp._id);
-  // Find the matching Firebase log
-  const fireLog = firebaseData?.[emp._id]?.latestLog || null;
 
   return {
     ...emp,
     // If your "users" array already has a "status" field, decide which to prefer:
     // We'll take from Django if available, else fallback to emp.status
     status: djangoEmp?.status || emp.status,
-    // Attach the firebase log info
-    latestLog: fireLog,
   };
 }

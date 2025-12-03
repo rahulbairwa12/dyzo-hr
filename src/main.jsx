@@ -8,7 +8,6 @@ import { BrowserRouter } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import store from "./store";
-import { PermissionProvider } from "./components/userProfile/PermissionContext";
 import 'shepherd.js/dist/css/shepherd.css';
 
 
@@ -24,7 +23,6 @@ if (typeof window !== 'undefined') {
       { name: "react-collapse", pattern: /collapse/ },
       { name: "shepherd.js", pattern: /shepherd/ },
       { name: "react-pdf", pattern: /react-pdf/ },
-      { name: "react-date-range", pattern: /date-range/ }
     ];
 
     // Check each library pattern against the stack trace
