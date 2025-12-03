@@ -302,11 +302,6 @@ const Profile = () => {
           action: () => navigate(`/profile/${userInfo?._id}`),
         },
         {
-          label: "What's new!",
-          icon: "heroicons-outline:sparkles",
-          action: () => navigate("/changelog"),
-        },
-        {
           label: "Settings",
           icon: "heroicons-outline:cog",
           action: () => navigate("/settings"),
@@ -315,18 +310,6 @@ const Profile = () => {
           label: "Billing",
           icon: "stash:billing-info-solid",
           action: () => navigate("/user-transaction-history"),
-        },
-        {
-          label: "Desktop App",
-          icon: "mynaui:desktop",
-          action: () => {
-            navigate("/download")
-          }
-        },
-        {
-          label: "Chrome Extension",
-          icon: "material-symbols:extension-outline",
-          action: () => window.open("https://chromewebstore.google.com/detail/dyzo-task-manager/lajocdihefihpcidhehkiodaibaibjaf", "_blank"),
         },
         {
           label: "Get Support",
@@ -358,23 +341,6 @@ const Profile = () => {
           action: () => navigate(`/profile/${userInfo?._id}`),
         },
         {
-          label: "What's new!",
-          icon: "heroicons-outline:sparkles",
-          action: () => navigate("/changelog"),
-        },
-        {
-          label: "Desktop App",
-          icon: "mynaui:desktop",
-          action: () => {
-            navigate("/download")
-          }
-        },
-        {
-          label: "Chrome Extension",
-          icon: "material-symbols:extension-outline",
-          action: () => window.open("https://chromewebstore.google.com/detail/dyzo-task-manager/lajocdihefihpcidhehkiodaibaibjaf", "_blank"),
-        },
-        {
           label: "Get Support",
           icon: "logos:whatsapp-icon",
           action: () => {
@@ -403,23 +369,6 @@ const Profile = () => {
         label: "Profile",
         icon: "heroicons-outline:user",
         action: () => navigate(`/profile/${userInfo?._id}?name=${userInfo?.name}`),
-      },
-      {
-        label: "What's new!",
-        icon: "heroicons-outline:sparkles",
-        action: () => navigate("/changelog"),
-      },
-      {
-        label: "Desktop App",
-        icon: "mynaui:desktop",
-        action: () => {
-          navigate("/download")
-        }
-      },
-      {
-        label: "Chrome Extension",
-        icon: "material-symbols:extension-outline",
-        action: () => window.open("https://chromewebstore.google.com/detail/dyzo-task-manager/lajocdihefihpcidhehkiodaibaibjaf", "_blank"),
       },
       {
         label: "Get Support",
