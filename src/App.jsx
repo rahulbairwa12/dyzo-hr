@@ -360,24 +360,9 @@ const App = () => {
     });
   };
 
-  useEffect(() => {
-    if (import.meta.env.PROD && companyId !== 2) {
-      setTimeout(() => {
-        (function (c, l, a, r, i, t, y) {
-          c[a] =
-            c[a] ||
-            function () {
-              (c[a].q = c[a].q || []).push(arguments);
-            };
-          t = l.createElement(r);
-          t.async = 1;
-          t.src = "https://www.clarity.ms/tag/" + i;
-          y = l.getElementsByTagName(r)[0];
-          y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "od76c9jkk7");
-      }, 3000);
-    }
 
+
+  useEffect(() => {
     // Call fetchPlanData whenever the app loads, if companyId exists
     if (userInfo?.companyId) {
       dispatch(fetchPlanData(userInfo.companyId)).then(() => {

@@ -11,7 +11,6 @@ import { Icon } from "@iconify/react";
 import { logout } from "@/store/api/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setFilters } from "@/features/tasks";
 
 const FormValidationSchema = yup
     .object({
@@ -46,15 +45,6 @@ const ChangePassword = () => {
         localStorage.removeItem("loginCredentials");
         localStorage.removeItem("taskFilters");
         sessionStorage.clear();
-        dispatch(
-              setFilters({
-                userId: "",
-                projectId: "",
-                taskPosition: [],
-                dateRange: { startDate: "", endDate: "" },
-                priority: "",
-              })
-            );
         dispatch(logout());
         navigate("/login");
     };

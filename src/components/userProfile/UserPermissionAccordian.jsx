@@ -5,14 +5,12 @@ import SkeletionTable from '../skeleton/Table';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
-import { usePermissions } from './PermissionContext';
 
 const UserPermissionAccordion = () => {
     const [permissionsTemplate, setPermissionsTemplate] = useState({});
     const [employeePermissions, setEmployeePermissions] = useState({});
     const [loading, setLoading] = useState(false);
     const { userId } = useParams();
-    const { updatePermissions } = usePermissions() || { updatePermissions: () => {} };
     const userInfo = useSelector(state => state.auth.user);
     const [updating, setUpdating] = useState(false);
 
@@ -86,7 +84,6 @@ const UserPermissionAccordion = () => {
             const response = await fetchAuthPut(`${import.meta.env.VITE_APP_DJANGO}/employee/${userId}/permissions/`, { body: { permissions: employeePermissions } });
             if (response.status) {
                 toast.success('Permissions updated successfully');
-                updatePermissions(employeePermissions);
             } else {
                 toast.error('Failed to update permissions');
             }
@@ -105,29 +102,29 @@ const UserPermissionAccordion = () => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         {Object.entries(permissionsTemplate)
-                          .filter(([key]) => !["Attendance", "Notice", "Leave", "Client"].includes(key))
-                          .map(([key, value], index) => (
-                            <UserPermissionAccordionItem
-                                key={index}
-                                title={key}
-                                isAllSelected={areAllSelected(key)}
-                                onSelectAll={(isSelected) => toggleSelectAll(key, isSelected)}
-                            >
-                                <div className="">
-                                    {Object.entries(value).map(([subKey, subValue], subIndex) => (
-                                        <label key={subIndex} className="flex items-center mb-2 ml-3">
-                                            <input
-                                                type="checkbox"
-                                                className="form-checkbox h-4 w-4 text-blue-600 rounded focus:ring-blue-500 transition duration-150 ease-in-out"
-                                                onChange={() => togglePermission(key, subKey)}
-                                                checked={!!employeePermissions[key]?.[subKey]}
-                                            />
-                                            <span className="ml-3 text-gray-700 dark:text-gray-300">{`${subKey}: ${subValue}`}</span>
-                                        </label>
-                                    ))}
-                                </div>
-                            </UserPermissionAccordionItem>
-                        ))}
+                            .filter(([key]) => !["Attendance", "Notice", "Leave", "Client"].includes(key))
+                            .map(([key, value], index) => (
+                                <UserPermissionAccordionItem
+                                    key={index}
+                                    title={key}
+                                    isAllSelected={areAllSelected(key)}
+                                    onSelectAll={(isSelected) => toggleSelectAll(key, isSelected)}
+                                >
+                                    <div className="">
+                                        {Object.entries(value).map(([subKey, subValue], subIndex) => (
+                                            <label key={subIndex} className="flex items-center mb-2 ml-3">
+                                                <input
+                                                    type="checkbox"
+                                                    className="form-checkbox h-4 w-4 text-blue-600 rounded focus:ring-blue-500 transition duration-150 ease-in-out"
+                                                    onChange={() => togglePermission(key, subKey)}
+                                                    checked={!!employeePermissions[key]?.[subKey]}
+                                                />
+                                                <span className="ml-3 text-gray-700 dark:text-gray-300">{`${subKey}: ${subValue}`}</span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </UserPermissionAccordionItem>
+                            ))}
                     </div>
 
                     {userInfo.isAdmin && (

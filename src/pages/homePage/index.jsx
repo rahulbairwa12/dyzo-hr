@@ -35,7 +35,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper"; // ⬅️ not from "swiper/modules"
 import "swiper/css";
 import inboxSection from "./images/inboxSection.webp";
-
+import dyzoAi from "./images/dyzoAi.webp";
 import liveReport from "./images/liveReport.webp";
 import pricingPage from "./images/pricingPage.webp";
 import howItWork1 from "./images/howItWorks1.webp";

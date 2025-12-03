@@ -25,8 +25,6 @@ import { toast, ToastContainer } from "react-toastify";
 import { CardInfo } from "@/components/userProfile/CardInfo";
 import Card from "@/components/ui/Card";
 
-import DeleteClientPopUp from "@/components/client/DeleteClientPopUp";
-import TransferEmployee from "@/components/client/TransferEmployee";
 import Status from "@/components/userProfile/Status";
 
 import { currentStatus } from "@/helper/helper";
@@ -556,21 +554,7 @@ const UserProfile = () => {
         </Card>
       </div>
 
-      {/* ====== Delete popup ====== */}
-      <DeleteClientPopUp
-        showModal={showDeleteModal}
-        onClose={() => setShowDeleteModal(false)}
-        handleDelete={handleDeleteEmployee}
-        loading={deleteLoading}
-      />
 
-      {/* ====== Transfer popup ====== */}
-      <TransferEmployee
-        showModal={showTransferModel}
-        onClose={() => setTransferModel(false)}
-        handleTransfer={handleTransfer}
-        loading={deleteLoading}
-      />
 
       {/* ====== Status modal (for self) ====== */}
       <Status

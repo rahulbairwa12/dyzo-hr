@@ -2,7 +2,6 @@ import React, { useMemo, useState } from "react";
 import Card from "@/components/ui/Card";
 import { useTable, useRowSelect, useSortBy, useGlobalFilter, usePagination } from "react-table";
 import { Icon } from "@iconify/react";
-import DeleteClientPopUp from "../client/DeleteClientPopUp";
 import { fetchDelete } from "@/store/api/apiSlice";
 import { toast } from "react-toastify";
 
@@ -170,10 +169,6 @@ const FamilyDetailList = ({ familyInformation, fetchFamilyInfo }) => {
                 </div>
 
             </Card>
-
-            {<DeleteClientPopUp showModal={showDeletePopUp} onClose={() => setShowDeletePopUp(false)} loading={deleteLoading} handleDelete={handleDelete} />}
-
-
         </>
     );
 };
