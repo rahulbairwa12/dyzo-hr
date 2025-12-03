@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchAuthGET, fetchAuthPatch, fetchAuthPost , fetchAuthDeleteWithBody, fetchAuthDelete } from "./api/apiSlice";
+import { fetchAuthGET, fetchAuthPatch, fetchAuthPost, fetchAuthDeleteWithBody, fetchAuthDelete } from "./api/apiSlice";
 
 // Async thunk to fetch notifications
 export const fetchNotifications = createAsyncThunk(
@@ -10,7 +10,7 @@ export const fetchNotifications = createAsyncThunk(
   ) => {
     try {
       const baseURL = import.meta.env.VITE_APP_DJANGO;
-      let url = `${baseURL}/notifications/recipient/${userId}/?page=${page}`;
+      let url = `${baseURL}/notifications/recipient/${userId}/?app_type=hr&page=${page}`;
       Object.entries(params).forEach(([key, value]) => {
         if (value !== undefined) {
           let paramValue = value;
@@ -48,9 +48,8 @@ export const updateNotification = createAsyncThunk(
     { dispatch, rejectWithValue }
   ) => {
     try {
-      const url = `${
-        import.meta.env.VITE_APP_DJANGO
-      }/notifications/${id}/update/`;
+      const url = `${import.meta.env.VITE_APP_DJANGO
+        }/notifications/${id}/update/`;
       const payload = { body: { [field]: value ? "True" : "False" } };
       const response = await fetchAuthPatch(url, payload);
       if (response && !response.error) {

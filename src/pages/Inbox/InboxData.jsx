@@ -18,6 +18,7 @@ import { fetchUsers } from "@/store/usersSlice";
 import CommentWithMentions from "@/components/ui/CommentWithMentions";
 import { toast } from "react-toastify";
 import DeletePopup from "../inviteemployee/DeletePopup";
+import dyzoAiLogo from '../../assets/images/logo/dyzo-ai-logo.png'
 
 
 const InboxData = ({ onMessageSelect, selectedMessage }) => {
@@ -544,14 +545,10 @@ const InboxData = ({ onMessageSelect, selectedMessage }) => {
                   {/* Top row: Project name */}
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0 w-full">
                     <div>
-                      {
-                        msg?.category === "notice" ?
-                          <div className="flex gap-1 items-center">
-                            <Icon icon="heroicons:cpu-chip" className="w-4 h-4 text-gray-500" />
-                            <span className="text-[11px] font-medium text-black-700 dark:text-slate-300">System</span>
-                          </div> :
-                          renderProject(msg?.task_project)
-                      }
+                      <div className="flex gap-1">
+                        <img src={dyzoAiLogo} alt="logo" className="w-4" />
+                        <span className="text-[11px] font-medium text-black-700 dark:text-slate-300">Dyzo</span>
+                      </div>
                     </div>
                     <div className="flex gap-1 mt-1 sm:mt-0 self-end sm:self-auto">
                       <button
