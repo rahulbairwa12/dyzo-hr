@@ -41,147 +41,69 @@ export const menuItems = [
     isHide: false,
   },
   {
-    title: "My Tasks",
-    icon: "hugeicons:task-add-02",
-    link: "tasks",
-    isHide: false,
-  },
-
-  // {
-  //   title: "Teams",
-  //   icon: "mingcute:group-3-line",
-  //   link: "teams",
-  //   isHide: false,
-  // },
-  {
-    title: "Projects",
-    icon: "pajamas:project",
-    link: "projects",
-    isHide: false,
-    // navPermissionName: "Project",  
-  },
-  {
     title: "Users",
     icon: "clarity:employee-group-line",
     link: "employees",
     isHide: false,
   },
-  // {
-  //   title: "Clients",
-  //   icon: "dashicons:businessman",
-  //   link: "clients",
-  //   isHide: false,
-  //   // navPermissionName: "Client",
-  // },
   {
-    title: "Reports",
-    icon: "tabler:report-analytics",
+    title: "Manage",
+    icon: "material-symbols:folder-managed",
     link: "#",
     isHide: false,
     child: [
       {
-        childtitle: "Timesheet Reports",
-        childlink: "timesheet-report",
+        childtitle: "Notices",
+        childlink: "notices-management",
       },
-      // {
-      //   childtitle: "Project Reports",
-      //   childlink: "project-reports",
-      // },
-      // {
-      //   childtitle: "Client Reports",
-      //   childlink: "client-reports",
-      // },
       {
-        childtitle: "Live Reports",
-        childlink: "live-reports",
+        childtitle: "Expense",
+        childlink: "expense",
       },
-      // {
-      //   childtitle: "Attendance",
-      //   childlink: "attendance",
-      // },
+      {
+        childtitle: "Complain",
+        childlink: "complain",
+      },
+      {
+        childtitle: "Reference",
+        childlink: "reference",
+      },
+      {
+        childtitle: "Salary",
+        childlink: "salary-management",
+      },
+      {
+        childtitle: "Holiday",
+        childlink: "holiday",
+      },
+      {
+        childtitle: "HR",
+        childlink: "HR-contrl-desk",
+      },
     ],
   },
-  // {
-  //   title: "Manage",
-  //   icon: "material-symbols:folder-managed",
-  //   link: "#",
-  //   isHide: false,
-  //   child: [
-  //     {
-  //       childtitle: "Clients",
-  //       childlink: "clients",
-  //     },
-  //     {
-  //       childtitle: "Teams",
-  //       childlink: "teams",
-  //     },
-  //     {
-  //       childtitle: "Notices",
-  //       childlink: "notices-management",
-  //     },
-  //     // {
-  //     //   childtitle: "Calendar",
-  //     //   childlink: "calendar",
-  //     // },
-
-  //     {
-  //       childtitle: "Expense",
-  //       childlink: "expense",
-  //     },
-
-  //     // {
-  //     //   childtitle: "Complain",
-  //     //   childlink: "complain",
-  //     // },
-  //     // {
-  //     //   childtitle: "Reference",
-  //     //   childlink: "reference",
-  //     // },
-  //     // {
-  //     //   childtitle: "Salary",
-  //     //   childlink: "salary-management",
-  //     // },
-  //     {
-  //       childtitle: "Holiday",
-  //       childlink: "holiday",
-  //     },
-  //     // {
-  //     //   childtitle: "HR",
-  //     //   childlink: "HR-contrl-desk",
-  //     // },
-  //   ],
-  // },
-  // {
-  //   title: "Leaves",
-  //   icon: "fluent-mdl2:vacation",
-  //   link: "leaves",
-  //   isHide: false,
-  //   // navPermissionName: "Leave",
-  // },
-  // {
-  //   title: "Attendance",
-  //   icon: "fluent:people-audience-20-regular",
-  //   link: "attendance",
-  //   isHide: false,
-  //   // navPermissionName: "Attendance",0
-  // },
-
-  // {
-  //   title: "Calendar",
-  //   icon: "heroicons-outline:calendar",
-  //   link: "calendar",
-  //   isHide: false,
-  // },
-  // {
-  //   title: "Invite User",
-  //   icon: "fluent-mdl2:chat-invite-friend",
-  //   link: "invite-user",
-  //   isHide: false,
-  // },
   {
-    title: "Trash",
-    icon: "mynaui:trash",
-    link: "trash",
+    title: "Leaves",
+    icon: "fluent-mdl2:vacation",
+    link: "leaves",
+    isHide: false,
+  },
+  {
+    title: "Attendance",
+    icon: "fluent:people-audience-20-regular",
+    link: "attendance",
+    isHide: false,
+  },
+  {
+    title: "Calendar",
+    icon: "heroicons-outline:calendar",
+    link: "calendar",
+    isHide: false,
+  },
+  {
+    title: "Invite User",
+    icon: "fluent-mdl2:chat-invite-friend",
+    link: "invite-user",
     isHide: false,
   },
   {
@@ -190,13 +112,6 @@ export const menuItems = [
     link: "settings",
     isHide: false,
   },
-
-  // {
-  //   title: "Chat",
-  //   isHide: false,
-  //   icon: "heroicons-outline:chat",
-  //   link: "chat",
-  // },
 ];
 
 export const permissionItemMunu = [
@@ -204,12 +119,6 @@ export const permissionItemMunu = [
     title: "Leaves",
     icon: "fluent-mdl2:vacation",
     link: "leaves",
-    isHide: false,
-  },
-  {
-    title: "Project",
-    icon: "pajamas:project",
-    link: "project/client",
     isHide: false,
   },
   {
@@ -222,12 +131,6 @@ export const permissionItemMunu = [
     title: "Invite User",
     icon: "fluent-mdl2:chat-invite-friend",
     link: "invite-user",
-    isHide: false,
-  },
-  {
-    title: "Clients",
-    icon: "dashicons:businessman",
-    link: "clients",
     isHide: false,
   },
 ];
@@ -246,120 +149,35 @@ export const employeeMenuItems = [
     isHide: false,
   },
   {
-    title: "Tasks",
-    icon: "hugeicons:task-add-02",
-    link: "tasks",
+    title: "Leaves",
+    icon: "fluent-mdl2:vacation",
+    link: "leaves",
     isHide: false,
   },
   {
-    title: "Projects",
-    icon: "pajamas:project",
-    link: "projects",
-    isHide: false,
-  },
-  // {
-  //   title: "Teams",
-  //   icon: "mingcute:group-3-line",
-  //   link: "teams",
-  //   isHide: false,
-  // },
-  {
-    title: "Timesheet Reports",
-    icon: "tabler:report-analytics",
-    link: "timesheet-report",
-    isHide: false,
-  },
-  // {
-  //   title: "Attendance",
-  //   icon: "fluent:people-audience-20-regular",
-  //   link: "attendance",
-  //   isHide: false,
-  // },
-  // {
-  //   title: "Leaves",
-  //   icon: "fluent-mdl2:vacation",
-  //   link: "leaves",
-  //   isHide: false,
-  // },
-  // {
-  //   title: "Calendar",
-  //   icon: "heroicons-outline:calendar",
-  //   link: "calendar",
-  //   isHide: false,
-  // },
-  {
-    title: "Trash",
-    icon: "mynaui:trash",
-    link: "trash",
-    isHide: false,
-  },
-  // {
-  //   title: "Settings",
-  //   icon: "weui:setting-outlined",
-  //   link: "settings",
-  //   isHide: false,
-  // },
-
-  // {
-  //   title: "Chat",
-  //   isHide: false,
-  //   icon: "heroicons-outline:chat",
-  //   link: "chat",
-  // },
-];
-
-export const clientMenuItems = [
-
-  {
-    title: "Tasks",
-    icon: "hugeicons:task-add-02",
-    link: "tasks",
+    title: "Attendance",
+    icon: "fluent:people-audience-20-regular",
+    link: "attendance",
     isHide: false,
   },
   {
-    title: "Inbox",
-    icon: "basil:notification-on-outline",
-    link: "inbox",
+    title: "Calendar",
+    icon: "heroicons-outline:calendar",
+    link: "calendar",
     isHide: false,
   },
-  {
-    title: "Projects",
-    icon: "pajamas:project",
-    link: "projects",
-    isHide: false,
-  },
-
-  {
-    title: "Timesheet Reports",
-    icon: "tabler:report-analytics",
-    link: "timesheet-report",
-    isHide: false,
-  },
-
-  {
-    title: "Trash",
-    icon: "mynaui:trash",
-    link: "trash",
-    isHide: false,
-  },
-
   {
     title: "Settings",
     icon: "weui:setting-outlined",
     link: "settings",
     isHide: false,
   },
-
-
-
 ];
 
+export const clientMenuItems = [];
+
 export const topMenu = [
-  {
-    title: "Tasks",
-    icon: "hugeicons:task-add-02",
-    link: "tasks",
-  },
+
 
   {
     title: "Manage",
@@ -381,11 +199,7 @@ export const topMenu = [
         childlink: "dashboard",
         childicon: "tabler:report-analytics",
       },
-      {
-        childtitle: "Projects",
-        childlink: "projects",
-        childicon: "pajamas:project",
-      },
+
 
       {
         childtitle: "Users",
@@ -424,33 +238,7 @@ export const topMenu = [
     ],
   },
 
-  {
-    title: "Reports",
-    icon: "tabler:report-analytics",
-    link: "#",
-    child: [
-      {
-        childtitle: "Timesheet Reports",
-        childlink: "timesheet-report",
-        childicon: "tabler:report-analytics",
-      },
-      {
-        childtitle: "Project Reports",
-        childlink: "project-reports",
-        childicon: "tabler:report-analytics",
-      },
-      {
-        childtitle: "Client Reports",
-        childlink: "client-reports",
-        childicon: "tabler:report-analytics",
-      },
-      {
-        childtitle: "Live Reports",
-        childlink: "live-reports",
-        childicon: "tabler:report-analytics",
-      },
-    ],
-  },
+
 
   {
     title: "Extra",
@@ -557,11 +345,7 @@ export const topMenuEmployee = [
   //   link: "dashboard",
   // },
 
-  {
-    title: "Tasks",
-    icon: "hugeicons:task-add-02",
-    link: "tasks",
-  },
+
   {
     title: " Timesheet",
     icon: "tabler:report-analytics",

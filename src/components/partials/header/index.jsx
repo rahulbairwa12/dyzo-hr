@@ -15,27 +15,27 @@ import useRtl from "@/hooks/useRtl";
 import useMobileMenu from "@/hooks/useMobileMenu";
 import MonoChrome from "./Tools/MonoChrome";
 import AddTaskIcon from "./Tools/AddTaskIcon";
-import AddTaskPopUp from "@/components/Task/AddTaskPopup";
+
 import Tooltip from "@/components/ui/Tooltip";
 import { Menu } from "@headlessui/react"; // Assuming you're using Headless UI
 import Dropdown from "@/components/ui/Dropdown";
-import AddProject from "@/components/Projects/AddProject";
+
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import AddClientModal from "@/components/client/AddClientModal";
+
 import InternetStatusIndicator from "@/components/ui/InternetStatusIndicator";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAuthGET } from "@/store/api/apiSlice";
 import { enforceSubscriptionLimit } from "@/store/planSlice";
 import DyzoLogo from "@/assets/images/logo/dyzo-ai-logo.png";
-import DyzoAiModal from "@/components/dyzoAi/DyzoAiModal";
+
 import ModernTooltip from "@/components/ui/ModernTooltip";
 
 const Header = ({ className = "custom-class" }) => {
   const [collapsed, setMenuCollapsed] = useSidebar();
   const { width, breakpoints } = useWidth();
   const [navbarType] = useNavbarType();
-  const [showAddProjectModal, setShowAddProjectModal] = useState(false); // For Add Project Modal
-  const [showAiModal , setShowAiModal] = useState(false)
+
+
   const location = useLocation();
   const isDashboard =
     location.pathname === "/" || location.pathname === "/dashboard";
@@ -43,8 +43,7 @@ const Header = ({ className = "custom-class" }) => {
     location.pathname === "/tasks" || location.pathname.startsWith("/tasks?");
   const isProjectReportsPage = location.pathname === "/project-reports";
 
-  // This variable determines where Add Task button should be hidden
-  const shouldHideButtons = isTasksPage || isProjectReportsPage;
+
   const userInfo = useSelector((state) => state.auth.user);
 
   const dispatch = useDispatch();
@@ -69,7 +68,7 @@ const Header = ({ className = "custom-class" }) => {
   const [skin] = useSkin();
   const [isRtl] = useRtl();
   const navigate = useNavigate();
-  const [showAddClientModal, setShowAddClientModal] = useState(false);
+
 
   const [mobileMenu, setMobileMenu] = useMobileMenu();
   const [downloadLink, setDownloadLink] = useState("#");
@@ -123,34 +122,7 @@ const Header = ({ className = "custom-class" }) => {
     setDropdownVisible(false); // Close the dropdown after action
   };
 
-  const AddTaskMenu = [
-    {
-      label: "Add Task",
-      icon: "heroicons-outline:check-circle",
-      action: () => setShowModal(true),
-    },
-    {
-      label: "Add Project",
-      icon: "heroicons-outline:briefcase",
-      action: () => setShowAddProjectModal(true), // Show Add Project Modal
-    },
-    {
-      label: "Invite User",
-      icon: "heroicons-outline:user-add",
-      action: () => navigate("/invite-user"), // Redirect to invite employee page
-    },
-    {
-      label: "Add Client",
-      icon: "heroicons-outline:user-group",
-      action: () => setShowAddClientModal(true), // This will open the modal
-    },
-  ];
 
-  const handleAddTaskClick = () => {
-    const allowed = dispatch(enforceSubscriptionLimit());
-    if (!allowed) return;
-    setShowModal(true);
-  };
 
   // Function to extract project ID from URL if on project details page
   const getProjectIdFromUrl = () => {
@@ -164,13 +136,7 @@ const Header = ({ className = "custom-class" }) => {
     return null;
   };
 
-  const AddTaskIcon = ({ handleClick }) => {
-    return (
-      <div className="Notification relative lg:h-[32px] lg:w-[32px] lg:bg-slate-100 text-slate-900 lg:dark:bg-slate-900 dark:text-white cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center">
-        <Icon icon="heroicons-outline:plus-circle" onClick={handleClick} />
-      </div>
-    );
-  };
+
 
   return (
     <header>
@@ -247,33 +213,9 @@ const Header = ({ className = "custom-class" }) => {
             <InternetStatusIndicator />
 
             {/* Add Task button - shown on all pages except where hideButtons is true */}
-            {!shouldHideButtons && (
-                <div className="relative">
-                  <div
-                    className="flex items-center gap-2 px-4 py-2 rounded-md cursor-pointer text-electricBlue-100 bg-white text-sm font-medium border border-neutral-50"
-                    onClick={handleAddTaskClick}
-                  >
-                    <Icon icon="heroicons-outline:plus" className="w-5 h-5" />
-                    <span className="hidden md:inline">Add Task</span>
-                  </div>
-                </div>
-            )}
 
-              <ModernTooltip
-                content="Chat with dyzo ai"
-                placement="top"
-                arrow
-                animation="shift-away"
-              >
-                <button
-                  onClick={() => {
-                    setShowAiModal(!showAiModal)
-                  }}
-                  className="p-2 bg-gradient-to-r text-white from-electricBlue-50/90  to-electricBlue-50/70  rounded-md border"
-                >
-                  <Icon icon="mdi:stars-outline" className="h-5 w-5 text-white" />
-                </button>
-              </ModernTooltip>
+
+
 
             {/* Timer App button - displayed only on dashboard */}
             {/* {isDashboard && (
@@ -328,23 +270,10 @@ const Header = ({ className = "custom-class" }) => {
         </div>
       </div>
 
-      <AddTaskPopUp
-        showModal={showModal}
-        setShowModal={setShowModal}
-        projectId={getProjectIdFromUrl()}
-      />
-      <AddProject
-        showAddProjectModal={showAddProjectModal}
-        setShowAddProjectModal={setShowAddProjectModal}
-      />
-      <AddClientModal
-        showAddClientModal={showAddClientModal}
-        setShowAddClientModal={setShowAddClientModal}
-      />
-      {
-        showAiModal &&
-        <DyzoAiModal open={showAiModal} onClose={() => setShowAiModal(false)}/>
-      }
+
+
+
+
     </header>
   );
 };

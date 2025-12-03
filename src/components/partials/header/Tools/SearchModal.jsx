@@ -1,18 +1,9 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { debounce, throttle } from "lodash";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchAuthGET } from "@/store/api/apiSlice";
 import Icon from "@/components/ui/Icon";
-import { TaskPanel } from "@/features/tasks";
-import { fetchProjects } from "@/store/projectsSlice";
-import TaskPanelSkeleton from "@/features/tasks/components/TaskPanelSkeleton";
-import {
-  updateTaskCommentCount,
-} from "@/features/tasks/store/tasksSlice";
-import AttachmentViewer from "@/components/Task/AttachmentViewer";
-import { getAuthToken } from "@/utils/authToken";
-
 
 // Debug flag - set to false in production
 const DEBUG = true;
@@ -20,9 +11,7 @@ const DEBUG = true;
 const SearchModal = () => {
   const baseURL = import.meta.env.VITE_APP_DJANGO;
   const userInfo = useSelector((state) => state.auth.user);
-  const { projects } = useSelector((state) => state.projects);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState({});
@@ -36,17 +25,7 @@ const SearchModal = () => {
   const renderCount = useRef(0);
   const apiCallCount = useRef(0);
 
-  // Task panel states
-  const [isTaskPanelOpen, setIsTaskPanelOpen] = useState(false);
-  const [selectedTask, setSelectedTask] = useState({});
-  const [taskLoading, setTaskLoading] = useState(false);
-  const [isAttachmentViewerOpen, setIsAttachmentViewerOpen] = useState(false);
-  const [currentAttachment, setCurrentAttachment] = useState(0);
-  const [attachmentsForView, setAttachmentsForView] = useState([]);
-
   // States to track how many items to show per category
-  const [tasksToShow, setTasksToShow] = useState(10);
-  const [projectsToShow, setProjectsToShow] = useState(10);
   const [employeesToShow, setEmployeesToShow] = useState(10);
   const [clientsToShow, setClientsToShow] = useState(10);
 
@@ -59,21 +38,11 @@ const SearchModal = () => {
 
   // Reset pagination when query or active tab changes
   useEffect(() => {
-    setTasksToShow(10);
-    setProjectsToShow(10);
     setEmployeesToShow(10);
     setClientsToShow(10);
   }, [query, activeTab]);
 
   // Handler functions to load more items
-  const loadMoreTasks = () => {
-    setTasksToShow(prev => prev + 10);
-  };
-
-  const loadMoreProjects = () => {
-    setProjectsToShow(prev => prev + 10);
-  };
-
   const loadMoreEmployees = () => {
     setEmployeesToShow(prev => prev + 10);
   };
@@ -82,17 +51,11 @@ const SearchModal = () => {
     setClientsToShow(prev => prev + 10);
   };
 
-  // Log function that only works when DEBUG is true
-
-
   // Create throttled search function
   const fetchResults = useCallback(async (searchQuery) => {
     // Start performance timing
     perfRef.current.startTime = performance.now();
     apiCallCount.current++;
-    const currentCallId = apiCallCount.current;
-
-
 
     if (!searchQuery.trim()) {
       setSearchResults({});
@@ -106,7 +69,6 @@ const SearchModal = () => {
 
     // Cancel previous request if it exists
     if (abortControllerRef.current) {
-
       abortControllerRef.current.abort();
     }
 
@@ -118,41 +80,26 @@ const SearchModal = () => {
       // Create URL
       const url = `${baseURL}/api/global-search/${userInfo?.companyId}/?query=${encodeURIComponent(searchQuery)}`;
 
-
       // Use fetchAuthGET from apiSlice
       const data = await fetchAuthGET(url, false);
 
       // Record API call time
       perfRef.current.apiCallTime = performance.now() - perfRef.current.startTime;
 
-
       // Process results
       if (signal.aborted) {
-
         return;
       }
 
       if (data.status === 1) {
-        // Count total results to avoid unnecessary UI updates
-        const totalResults = countTotalResults(data.data);
-
-
-        if (totalResults > 100) {
-
-        }
-
         setSearchResults(data.data || {});
       } else {
-
         setSearchResults({});
       }
     } catch (error) {
       if (error.name === 'AbortError') {
-
         return;
       }
-
-
       setError(error.message || "An error occurred while searching");
       setSearchResults({});
     } finally {
@@ -214,7 +161,6 @@ const SearchModal = () => {
     }
 
     if (isOpen) {
-
       document.addEventListener("mousedown", handleClickOutside);
       // Small delay to trigger animation
       setTimeout(() => setVisible(true), 10);
@@ -255,7 +201,6 @@ const SearchModal = () => {
   }, [debouncedSearch, throttledInputHandler]);
 
   function closeModal() {
-
     setVisible(false);
     // Delay actual closing to allow animation
     setTimeout(() => {
@@ -267,71 +212,14 @@ const SearchModal = () => {
   }
 
   function openModal() {
-
     setIsOpen(true);
     setQuery("");
     setSearchResults({});
     setError(null);
   }
 
-  // Fetch task details API function
-  const fetchTaskDetails = async (taskId) => {
-    setTaskLoading(true);
-    try {
-      const apiUrl = `${baseURL}/api/tasks/${taskId}/`;
-      const data = await fetchAuthGET(apiUrl, false);
-      if (data?.status === 1) {
-        setSelectedTask(data?.data);
-        setIsTaskPanelOpen(true);
-        // Fetch projects if not already loaded
-        dispatch(fetchProjects());
-      } else {
-        setSelectedTask({});
-        console.error("Error fetching task details:");
-      }
-    } catch (error) {
-      setSelectedTask({});
-      console.error("Error fetching task details:", error);
-    }
-    setTaskLoading(false);
-  };
-
-  // Function to update task fields from child components
-  const handleTaskUpdate = (taskId, field, value) => {
-    setSelectedTask(prevTask => ({
-      ...prevTask,
-      [field]: value
-    }));
-  };
-
-  const handleCommentCountUpdate = (taskId, newCount) => {
-    dispatch(updateTaskCommentCount({ taskId, newCount }));
-  };
-
-  const handleAttachmentOpen = (index) => {
-    setCurrentAttachment(index);
-    setIsAttachmentViewerOpen(true);
-  };
-
-  const closeTaskPanel = () => {
-    setIsTaskPanelOpen(false);
-    setSelectedTask({});
-    setTaskLoading(false);
-  };
-
   const handleItemClick = useCallback((type, id) => {
     switch (type) {
-      case "task":
-        // Close search modal first
-        closeModal();
-        // Fetch and open task panel
-        fetchTaskDetails(id);
-        break;
-      case "project":
-        navigate(`/project/${id}?tab=tasks`);
-        setQuery("");
-        closeModal();
-        break;
       case "employee":
         navigate(`/profile/${id}`);
         setQuery("");
@@ -345,7 +233,7 @@ const SearchModal = () => {
       default:
         break;
     }
-  }, [navigate, baseURL, dispatch]);
+  }, [navigate]);
 
   // Filter results based on active tab - memoized
   const filteredResults = useMemo(() => {
@@ -373,12 +261,9 @@ const SearchModal = () => {
   const renderResults = useCallback(() => {
     // Increment render count for debugging
     renderCount.current++;
-    const currentRender = renderCount.current;
 
     // Start render timing
     const renderStartTime = performance.now();
-
-
 
     if (!query) return null;
 
@@ -409,76 +294,6 @@ const SearchModal = () => {
     } else {
       content = (
         <div>
-          {filteredResults.tasks && filteredResults.tasks.length > 0 && (
-            <div className="mb-4">
-              <div className="px-3 py-2 bg-slate-50 dark:bg-slate-700 font-medium text-xs uppercase text-slate-500 dark:text-slate-300">
-                Tasks ({filteredResults.tasks.length})
-              </div>
-              {filteredResults.tasks.slice(0, tasksToShow).map((task, index) => (
-                <div
-                  key={`task-${task.taskId || index}`}
-                  className="px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer transition-colors flex items-center"
-                  onClick={() => handleItemClick("task", task.taskId)}
-                >
-                  <Icon icon="heroicons-outline:clipboard-check" className="text-primary-500 h-5 w-5 mr-2 flex-shrink-0" />
-                  <div className="overflow-hidden">
-                    <div className="font-medium truncate">{task.taskName}</div>
-                    <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                      Project: {task.projectId__name}
-                    </div>
-                  </div>
-                </div>
-              ))}
-              {filteredResults.tasks.length > tasksToShow && (
-                <div
-                  className="px-4 py-1.5 text-xs text-center text-primary-500 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    loadMoreTasks();
-                  }}
-                >
-                  + {filteredResults.tasks.length - tasksToShow} more tasks
-                </div>
-              )}
-            </div>
-          )}
-
-          {filteredResults.projects && filteredResults.projects.length > 0 && (
-            <div className="mb-4">
-              <div className="px-3 py-2 bg-slate-50 dark:bg-slate-700 font-medium text-xs uppercase text-slate-500 dark:text-slate-300">
-                Projects ({filteredResults.projects.length})
-              </div>
-              {filteredResults.projects.slice(0, projectsToShow).map((project, index) => (
-                <div
-                  key={`project-${project._id || index}`}
-                  className="px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer transition-colors flex items-center"
-                  onClick={() => handleItemClick("project", project._id)}
-                >
-                  <Icon icon="heroicons-outline:briefcase" className="text-primary-500 h-5 w-5 mr-2 flex-shrink-0" />
-                  <div className="overflow-hidden">
-                    <div className="font-medium truncate">{project.name}</div>
-                    {project.description && (
-                      <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                        {project.description}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-              {filteredResults.projects.length > projectsToShow && (
-                <div
-                  className="px-4 py-1.5 text-xs text-center text-primary-500 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    loadMoreProjects();
-                  }}
-                >
-                  + {filteredResults.projects.length - projectsToShow} more projects
-                </div>
-              )}
-            </div>
-          )}
-
           {filteredResults.employees && filteredResults.employees.length > 0 && (
             <div className="mb-4">
               <div className="px-3 py-2 bg-slate-50 dark:bg-slate-700 font-medium text-xs uppercase text-slate-500 dark:text-slate-300">
@@ -559,11 +374,9 @@ const SearchModal = () => {
     // End render timing
     perfRef.current.renderTime = performance.now() - renderStartTime;
 
-
     return (
       <div className="max-h-60 overflow-auto overscroll-contain">
         {content}
-
       </div>
     );
   }, [
@@ -573,8 +386,6 @@ const SearchModal = () => {
     filteredResults,
     resultCounts,
     handleItemClick,
-    tasksToShow,
-    projectsToShow,
     employeesToShow,
     clientsToShow
   ]);
@@ -582,8 +393,6 @@ const SearchModal = () => {
   // Tabs configuration
   const tabs = [
     { name: "All", icon: "heroicons-outline:search", key: "all" },
-    { name: "Tasks", icon: "heroicons-outline:clipboard-list", key: "tasks", data: filteredResults?.tasks?.length },
-    { name: "Projects", icon: "heroicons-outline:briefcase", key: "projects", data: filteredResults?.projects?.length },
     { name: "Employees", icon: "heroicons-outline:user-group", key: "employees", data: filteredResults?.employees?.length },
     // { name: "Clients", icon: "heroicons-outline:user", key: "clients" ,data:filteredResults?.clients?.length},
   ];
@@ -636,7 +445,7 @@ const SearchModal = () => {
                 <input
                   ref={inputRef}
                   className="bg-transparent outline-none focus:outline-none border-none w-full flex-1 dark:placeholder:text-slate-300 dark:text-slate-200"
-                  placeholder="Search tasks, projects, or employees..."
+                  placeholder="Search employees..."
                   onChange={handleInputChange}
                   autoComplete="off"
                 />
@@ -681,58 +490,6 @@ const SearchModal = () => {
             </div>
           </div>
         </div>
-      )}
-
-      {/* Task Panel Modal */}
-      {isTaskPanelOpen && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black-500/70 backdrop-blur-sm w-full h-screen">
-          <div
-            className="w-full relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {taskLoading ? (
-              <TaskPanelSkeleton from="dashboard" />
-            ) : Object.keys(selectedTask).length > 0 ? (
-              <TaskPanel
-                task={selectedTask}
-                isOpen={true}
-                projects={projects}
-                onClose={closeTaskPanel}
-                onUpdateCommentCount={handleCommentCountUpdate}
-                handleAttachmentOpen={handleAttachmentOpen}
-                setAttachmentsForView={setAttachmentsForView}
-                isAttachmentViewerOpen={isAttachmentViewerOpen}
-                from="dashboard"
-                setTask={setSelectedTask}
-                updateTaskFields={handleTaskUpdate}
-              />
-            ) : (
-              <div className="p-8 text-center">
-                <div className="text-red-500 mb-2">
-                  <Icon icon="heroicons-outline:exclamation-triangle" className="w-12 h-12 mx-auto" />
-                </div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Task Not Found</h3>
-                <p className="text-gray-500 dark:text-slate-400 mb-4">We couldn't find the details for this task.</p>
-                <button
-                  onClick={closeTaskPanel}
-                  className="px-4 py-2 bg-primary-500 text-white rounded hover:bg-primary-600 transition-colors"
-                >
-                  Close
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Attachment Viewer */}
-      {isAttachmentViewerOpen && (
-        <AttachmentViewer
-          attachments={attachmentsForView && attachmentsForView}
-          initialIndex={currentAttachment}
-          open={isAttachmentViewerOpen}
-          onClose={() => setIsAttachmentViewerOpen(false)}
-        />
       )}
     </>
   );

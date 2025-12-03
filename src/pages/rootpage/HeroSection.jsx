@@ -11,12 +11,12 @@ import { login, token } from "@/store/api/auth/authSlice";
 import CompanyAskStep from "./CompanyAskStep";
 
 // Direct imports instead of lazy loading for critical images
-import heroimage from "./images/heroinfoimg.webp";
+
 import madeinindia from "./images/made-india-icon.webp";
 import googleIcon from "./images/google-icon.webp";
 import easyToUse from "../../assets/images/icons/easy_to_use.svg";
 import automatedReports from "../../assets/images/icons/automated_reports.svg";
-import dyzoDemo from "@/assets/video/dyzo-demo.mp4"; // Direct import for video
+
 
 const HeroSection = () => {
   // const [email, setEmail] = useState("");
@@ -158,7 +158,7 @@ const HeroSection = () => {
             setStep(2);
           } else {
             // status = 0 => Error, e.g. user not found, account inactive
-         
+
             toast.error(loginResponse.message || "Google login failed");
           }
         }

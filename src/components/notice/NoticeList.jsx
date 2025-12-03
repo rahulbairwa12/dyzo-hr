@@ -3,7 +3,6 @@ import Card from "@/components/ui/Card";
 import Icon from "@/components/ui/Icon";
 import { useTable, useRowSelect, useSortBy, useGlobalFilter, usePagination } from "react-table";
 import { formatDateWithMonthName, intialLetterName } from "@/helper/helper";
-import DeleteClientPopUp from "../client/DeleteClientPopUp";
 import { fetchDelete } from "@/store/api/apiSlice";
 import { toast } from "react-toastify";
 import ShowTextModal from "./ShowTextModal";
@@ -219,7 +218,7 @@ const NoticeList = ({ notices, fetchNoices }) => {
                                 <Icon icon="heroicons-outline:chevron-left" />
                             </button>
                         </li>
-                      
+
                         <li className="text-xl leading-4 text-slate-900 dark:text-white rtl:rotate-180">
                             <button
                                 className={` ${!canNextPage ? "opacity-50 cursor-not-allowed" : ""}`}
@@ -233,7 +232,6 @@ const NoticeList = ({ notices, fetchNoices }) => {
                 </div>
             </Card>
 
-            <DeleteClientPopUp showModal={showNoticeDeleteModal} onClose={() => setShowNoticeDeleteModal(false)} handleDelete={handleDelete} loading={deleteLoading} />
 
             <ShowTextModal showTextModal={showTextModal} setShowTextModal={setShowTextModal} description={description} />
         </>

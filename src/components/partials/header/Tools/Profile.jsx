@@ -19,7 +19,7 @@ import { toast } from "react-toastify";
 import database from "@/firebase/index";
 import { ref, onValue, off } from "firebase/database";
 import useWidth from "@/hooks/useWidth";
-import { setFilters } from "@/features/tasks";
+
 
 /* -------------------------------------
  * 1) Define a statusMapping for display
@@ -136,17 +136,8 @@ const Profile = () => {
     // Clear Redux state and local storage
     localStorage.removeItem("accounts");
     localStorage.removeItem("loginCredentials");
-    localStorage.removeItem("taskFilters")
+
     sessionStorage.clear();
-    dispatch(
-      setFilters({
-        userId: "",
-        projectId: "",
-        taskPosition: [],
-        dateRange: { startDate: "", endDate: "" },
-        priority: "",
-      })
-    );
     dispatch(logout());
 
     // Reset URL parameters by navigating to login page with no parameters

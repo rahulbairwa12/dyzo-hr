@@ -3,14 +3,14 @@ import { Navigate, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleActiveChat } from "@/pages/app/chat/store";
 import useMobileMenu from "@/hooks/useMobileMenu";
-import { fetchProjects } from "@/store/projectsSlice";
+
 import { fetchNotifications } from "@/store/notificationsSlice";
 import Submenu from "./Submenu";
 import Icon from "@/components/ui/Icon";
 import Tooltip from "@/components/ui/Tooltip";
 import 'tippy.js/dist/tippy.css';
 import useSidebar from "@/hooks/useSidebar";
-import AddProject from "@/components/Projects/AddProject";
+
 
 function cloneDeep(obj) {
   return JSON.parse(JSON.stringify(obj));
@@ -21,12 +21,12 @@ const Navmenu = ({ menus, sidebarHovered = false }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const [mobileMenu, setMobileMenu] = useMobileMenu();
-  const [showAddProjectModal, setShowAddProjectModal] = useState(false);
+
   const { permissions } = useSelector((state) => state.auth);
   const unread_count = useSelector((state) => state.notifications.unread_count);
 
   const userInfo = useSelector((state) => state.auth.user);
-  const { projects } = useSelector((state) => state.projects);
+
 
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [activeMultiMenu, setActiveMultiMenu] = useState(null);
@@ -39,11 +39,7 @@ const Navmenu = ({ menus, sidebarHovered = false }) => {
   // ─────────────────────────────────────────────────────────────────────────
   //  Fetch / derived logic (unchanged)
   // ─────────────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (userInfo?._id) {
-      dispatch(fetchProjects({ companyId: userInfo?.companyId, _id: userInfo?._id, showAll: false }));
-    }
-  }, [dispatch, userInfo]);
+
 
   useEffect(() => {
     if (userInfo?._id) {
@@ -93,37 +89,7 @@ const Navmenu = ({ menus, sidebarHovered = false }) => {
       return perm?.View === true || perm?.All === true;
     });
 
-    const projectMenu = filteredMenus.find((m) => m.link === "projects");
-    if (projectMenu) {
-      const originalChildren = projectMenu.child
-        ? projectMenu.child.filter(
-          (child) =>
-            child.childlink !== "/projects" &&
-            child.childtitle.toLowerCase() !== "all projects"
-        )
-        : [];
 
-      const projectSubItems = projects
-        ? projects
-          .filter((p) => p.name.toLowerCase() !== "all projects")
-          .map((p) => ({
-            childlink: `/project/${p._id}?tab=tasks`,
-            childtitle: p.name,
-            projectColor: p.projectColor || "#9CA3AF",
-            projectId: p?._id
-          }))
-        : [];
-
-      const merged = mergeUniqueSubItems(originalChildren, projectSubItems);
-
-      const allProjectsItem = {
-        childlink: "/tasks?from_project=true",
-        childtitle: "All Tasks",
-        projectColor: "#CBD5E1",
-      };
-
-      projectMenu.child = [allProjectsItem, ...merged];
-    }
 
     const inboxMenu = filteredMenus.find((m) => m.link === "inbox");
     if (inboxMenu && unread_count > 0) {
@@ -133,7 +99,7 @@ const Navmenu = ({ menus, sidebarHovered = false }) => {
     }
 
     return filteredMenus;
-  }, [menus, projects, permissions, unread_count]);
+  }, [menus, permissions, unread_count]);
 
   // ─────────────────────────────────────────────────────────────────────────
   //  ROUTE CHANGE EFFECT: find active submenu + multi menu
@@ -166,21 +132,9 @@ const Navmenu = ({ menus, sidebarHovered = false }) => {
       }
     });
 
-    // Keep Projects open when expanded ONLY if no other submenu matched
-    const projectsIndex = visibleMenu.findIndex((m) => m.link === 'projects');
-    if (!collapsed && submenuIndex === null && projectsIndex !== -1) {
-      submenuIndex = projectsIndex;
-    }
 
-    // Set document title globally based on current route
-    // If on a project route, prefer the actual project name over the numeric id
-    const projectMatch = location.pathname.match(/^\/project\/([^/]+)/);
-    const projectIdFromPath = projectMatch?.[1];
-    const currentProjectName = projectIdFromPath
-      ? (projects || []).find((p) => String(p._id) === String(projectIdFromPath))?.name
-      : null;
 
-    document.title = `Dyzo | ${currentProjectName || locationName}`;
+    document.title = `Dyzo | ${locationName}`;
     dispatch(toggleActiveChat(false));
     if (mobileMenu) {
       setMobileMenu(false);
@@ -220,10 +174,7 @@ const Navmenu = ({ menus, sidebarHovered = false }) => {
     if (collapsed && !sidebarHovered) return;
     const item = visibleMenu[index];
 
-    if (item?.link === 'projects') {
-      navigate('/projects');
-      return;
-    }
+
 
     setActiveSubmenu((prev) => {
       const willClose = prev === index;
@@ -260,9 +211,9 @@ const Navmenu = ({ menus, sidebarHovered = false }) => {
         const isActive = isLocationMatch(locationName, item.link) || childActive;
 
         const isProjects = item.link === 'projects';
-        const isProjectsRoute = location.pathname === '/projects' || location.pathname.startsWith('/project/');
-        const headerActive = isOpen || (isProjects && isProjectsRoute);
-        const headerClosedActive = isProjects && !isOpen && isProjectsRoute;
+        const isProjectsRoute = false;
+        const headerActive = isOpen;
+        const headerClosedActive = false;
 
         return (
           <li
@@ -365,7 +316,7 @@ const Navmenu = ({ menus, sidebarHovered = false }) => {
         );
       })}
 
-      <AddProject showAddProjectModal={showAddProjectModal} setShowAddProjectModal={setShowAddProjectModal} />
+
     </ul>
   );
 };

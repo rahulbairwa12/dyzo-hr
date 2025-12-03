@@ -592,7 +592,7 @@ const UserMultiSelect = ({
     <div className="relative" key={`multiUser-${index}`}>
       <div className="relative" ref={searchRef}>
         {/* Trigger Button */}
-        {from != "dyzoAi" && <div className="flex items-center space-x-1" onClick={handleOpenDropdown}>
+        <div className="flex items-center space-x-1" onClick={handleOpenDropdown}>
           <ModernTooltip
             placement="top"
             theme="custom-light"
@@ -633,7 +633,7 @@ const UserMultiSelect = ({
               <Icon icon="heroicons:plus" className="w-5 h-5" />
             </button>
           }
-        </div>}
+        </div>
 
         {/* Search Dropdown */}
         {showSearch && createPortal(

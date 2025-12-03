@@ -13,9 +13,8 @@ import Textarea from '@/components/ui/Textarea';
 import Select from '@/components/ui/Select';
 import { postAPI, postAPIFiles, fetchDelete } from '@/store/api/apiSlice';
 import { toast } from 'react-toastify';
-import Button from '@/components/ui/Button'; 
-import { formatDate } from '@/helper/helper'; 
-import DeleteClientPopUp from "@/components/client/DeleteClientPopUp";
+import Button from '@/components/ui/Button';
+import { formatDate } from '@/helper/helper';
 
 const DateInput = ({ label, name, register, error, placeholder }) => (
     <div className={`formGroup ${error ? "has-error" : ""}`}>
@@ -445,14 +444,6 @@ const Reference = () => {
                     </div>
                 </form>
             </AdvancedModal>
-
-            {/* Delete confirmation modal */}
-            <DeleteClientPopUp
-                showModal={deleteModalOpen}
-                onClose={() => setDeleteModalOpen(false)}
-                handleDelete={handleDelete}
-                loading={deleteLoading}
-            />
         </div>
     );
 };

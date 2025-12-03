@@ -35,7 +35,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper"; // ⬅️ not from "swiper/modules"
 import "swiper/css";
 import inboxSection from "./images/inboxSection.webp";
-import dyzoAi from "./images/dyzoAi.webp";
+
 import liveReport from "./images/liveReport.webp";
 import pricingPage from "./images/pricingPage.webp";
 import howItWork1 from "./images/howItWorks1.webp";
@@ -531,7 +531,7 @@ const Index = () => {
                         setStep(2);
                     } else {
                         // status = 0 => Error, e.g. user not found, account inactive
-                      
+
                         toast.error(loginResponse.message || "Google login failed");
                     }
                 }
@@ -675,12 +675,7 @@ const Index = () => {
                             className="mt-4 md:mt-4 flex flex-wrap justify-center gap-4"
                             id="workspace"
                         >
-                            <div className="bg-white px-1 py-1 rounded-full border flex items-center">
-                                <div className="w-6 h-6 bg-blue-200 rounded-full flex justify-center items-center ">
-                                    <Icon icon="mdi:stars" />
-                                </div>
-                                <span className="text-blue-600 text-sm font-medium mx-4">Dyzo-AI Assistant</span>
-                            </div>
+
                             <div className="bg-white px-1 py-1 rounded-full border flex items-center">
                                 <div className="w-6 h-6 bg-blue-200 rounded-full flex justify-center items-center ">
                                     <img src={AutomatedReportsIcon} className="w-4" alt="" />
@@ -1084,8 +1079,8 @@ const Index = () => {
                                     ref={cardRefs.setUp}
                                     onClick={() => handleSetActive("setUp")}
                                     className={`min-w-[75%] md:min-w-0 md:flex-1 cursor-pointer rounded-xl px-3 py-4 snap-center transition ${activeTab === "setUp"
-                                            ? "border border-blue-500 shadow-xl shadow-blue-500/20 bg-white"
-                                            : "bg-[#EAEAEA]"
+                                        ? "border border-blue-500 shadow-xl shadow-blue-500/20 bg-white"
+                                        : "bg-[#EAEAEA]"
                                         }`}
                                 >
                                     <div className="flex items-start gap-2">
@@ -1103,8 +1098,8 @@ const Index = () => {
                                     ref={cardRefs.timeTrack}
                                     onClick={() => handleSetActive("timeTrack")}
                                     className={`min-w-[75%] md:min-w-0 md:flex-1 cursor-pointer rounded-xl px-3 py-4 snap-center transition ${activeTab === "timeTrack"
-                                            ? "border border-blue-500 shadow-xl shadow-blue-500/20 bg-white"
-                                            : "bg-[#EAEAEA]"
+                                        ? "border border-blue-500 shadow-xl shadow-blue-500/20 bg-white"
+                                        : "bg-[#EAEAEA]"
                                         }`}
                                 >
                                     <div className="flex items-start gap-2">
@@ -1122,8 +1117,8 @@ const Index = () => {
                                     ref={cardRefs.screenshot}
                                     onClick={() => handleSetActive("screenshot")}
                                     className={`min-w-[75%] md:min-w-0 md:flex-1 cursor-pointer rounded-xl px-3 py-4 snap-center transition ${activeTab === "screenshot"
-                                            ? "border border-blue-500 shadow-xl shadow-blue-500/20 bg-white"
-                                            : "bg-[#EAEAEA]"
+                                        ? "border border-blue-500 shadow-xl shadow-blue-500/20 bg-white"
+                                        : "bg-[#EAEAEA]"
                                         }`}
                                 >
                                     <div className="flex items-start gap-2">
@@ -1141,8 +1136,8 @@ const Index = () => {
                                     ref={cardRefs.reports}
                                     onClick={() => handleSetActive("reports")}
                                     className={`min-w-[75%] md:min-w-0 md:flex-1 cursor-pointer rounded-xl px-3 py-4 snap-center transition mr-20 ${activeTab === "reports"
-                                            ? "border border-blue-500 shadow-xl shadow-blue-500/20 bg-white"
-                                            : "bg-[#EAEAEA]"
+                                        ? "border border-blue-500 shadow-xl shadow-blue-500/20 bg-white"
+                                        : "bg-[#EAEAEA]"
                                         }`}
                                 >
                                     <div className="flex items-start gap-2">

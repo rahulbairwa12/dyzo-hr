@@ -7,7 +7,6 @@ import Button from "@/components/ui/Button";
 import CreateHoliday from "@/components/holiday/CreateHoliday";
 import SkeletionTable from "@/components/skeleton/Table";
 import HolidayList from "@/components/holiday/HolidayList";
-import DeleteClientPopUp from "@/components/client/DeleteClientPopUp";
 import EditHoliday from "@/components/holiday/EditHoliday";
 import ImportModal from "@/components/holiday/ImportModal";
 import Icon from "@/components/ui/Icon";
@@ -95,7 +94,7 @@ const Holiday = () => {
                         Holidays
                     </h4>
                     <div className="inline-flex">
-                        <select 
+                        <select
                             value={selectedYear}
                             onChange={(e) => handleYearChange(parseInt(e.target.value))}
                             className="text-sm rounded-md border border-slate-200 px-3 py-1.5 bg-white dark:bg-slate-800 dark:border-slate-700"
@@ -137,14 +136,14 @@ const Holiday = () => {
                                 </span>
                             </div>
                             <div className="flex gap-2">
-                                <Button 
-                                    text="Cancel" 
+                                <Button
+                                    text="Cancel"
                                     className="border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700"
                                     onClick={() => setHolidayDeleteId([])}
                                 />
-                                <Button 
-                                    text="Delete" 
-                                    className="btn-danger" 
+                                <Button
+                                    text="Delete"
+                                    className="btn-danger"
                                     icon="heroicons-outline:trash"
                                     onClick={() => setShowDeleteHolidayModal(true)}
                                 />
@@ -178,12 +177,12 @@ const Holiday = () => {
                             </div>
                         </div>
                     ) : (
-                        <HolidayList 
-                            holidayList={holidayList} 
+                        <HolidayList
+                            holidayList={holidayList}
                             handleSetDeleteId={handleSetDeleteId}
-                            selectedIds={holidayDeleteId} 
-                            setData={setData} 
-                            setHolidayId={setHolidayId} 
+                            selectedIds={holidayDeleteId}
+                            setData={setData}
+                            setHolidayId={setHolidayId}
                             setShowHolidayEditModal={setShowHolidayEditModal}
                         />
                     )}
@@ -191,10 +190,10 @@ const Holiday = () => {
             )}
 
             {showCreateModal && (
-                <CreateHoliday 
-                    showCreateModal={showCreateModal} 
-                    setShowCreateModal={setShowCreateModal} 
-                    fetchHolidays={fetchHolidays} 
+                <CreateHoliday
+                    showCreateModal={showCreateModal}
+                    setShowCreateModal={setShowCreateModal}
+                    fetchHolidays={fetchHolidays}
                 />
             )}
 
@@ -211,21 +210,12 @@ const Holiday = () => {
             )}
 
             {showImportModal && (
-                <ImportModal 
-                    showImportModal={showImportModal} 
-                    setShowImportModal={setShowImportModal} 
-                    fetchHolidays={fetchHolidays} 
+                <ImportModal
+                    showImportModal={showImportModal}
+                    setShowImportModal={setShowImportModal}
+                    fetchHolidays={fetchHolidays}
                 />
             )}
-
-            <DeleteClientPopUp 
-                showModal={showDeleteHolidayModal} 
-                onClose={() => setShowDeleteHolidayModal(false)} 
-                handleDelete={handleDelete} 
-                loading={deleteLoading}
-                title={`Delete ${holidayDeleteId.length > 1 ? 'Holidays' : 'Holiday'}`}
-                content={`Are you sure you want to delete ${holidayDeleteId.length} selected ${holidayDeleteId.length > 1 ? 'holidays' : 'holiday'}?`}
-            />
         </div>
     );
 };

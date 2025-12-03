@@ -18,7 +18,7 @@ import { fetchUsers } from "@/store/usersSlice";
 import CommentWithMentions from "@/components/ui/CommentWithMentions";
 import { toast } from "react-toastify";
 import DeletePopup from "../inviteemployee/DeletePopup";
-import dyzoAiLogo from '../../assets/images/logo/dyzo-ai-logo.png'
+
 
 const InboxData = ({ onMessageSelect, selectedMessage }) => {
   const [notifications, setNotifications] = useState([]);
@@ -380,16 +380,7 @@ const InboxData = ({ onMessageSelect, selectedMessage }) => {
       const color = project.color || "#9ca3af";
       const name = project.name || `Project ${project.id ?? ""}`;
       return (
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            if (project.id) {
-              navigate(`/project/${project.id}?tab=tasks`);
-            }
-          }}
-          className="inline-flex items-center text-left text-[11px] text-black-700 dark:text-slate-300"
-        >
+        <div className="inline-flex items-center text-left text-[11px] text-black-700 dark:text-slate-300">
           <span
             style={{
               width: 10,
@@ -401,7 +392,7 @@ const InboxData = ({ onMessageSelect, selectedMessage }) => {
             }}
           />
           <span className="truncate max-w-[220px] sm:max-w-[280px]">{name}</span>
-        </button>
+        </div>
       );
     }
     // Legacy format: HTML string coming from server
@@ -555,9 +546,9 @@ const InboxData = ({ onMessageSelect, selectedMessage }) => {
                     <div>
                       {
                         msg?.category === "notice" ?
-                          <div className="flex gap-1">
-                            <img src={dyzoAiLogo} alt="logo" className="w-4" />
-                            <span className="text-[11px] font-medium text-black-700 dark:text-slate-300">Dyzo</span>
+                          <div className="flex gap-1 items-center">
+                            <Icon icon="heroicons:cpu-chip" className="w-4 h-4 text-gray-500" />
+                            <span className="text-[11px] font-medium text-black-700 dark:text-slate-300">System</span>
                           </div> :
                           renderProject(msg?.task_project)
                       }

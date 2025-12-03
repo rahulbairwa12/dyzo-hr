@@ -6,38 +6,6 @@ import SuperAdminRoute from "./protectedRoutes/SuperAdminRoute";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { HelmetProvider } from "react-helmet-async";
 import { Helmet } from "react-helmet-async";
-import { TasksPage } from "./features/tasks";
-import SectionTaskPage from "./features/section-task/components/SectionTaskPage";
-const Payment = lazy(() => import("./pages/payment"));
-const Team = lazy(() => import("./pages/team"));
-const UserFeedback = lazy(() => import("./pages/team/UserFeedback"));
-
-
-// New Timesheet
-const NewTimesheet = lazy(
-  () => import("./pages/reports/newTimesheet/index"),
-);
-const TimesheetLogs = lazy(() => import("./pages/reports/newTimesheet/TimesheetLogs"));
-const TimeLogScreenshots = lazy(() => import("./pages/reports/newTimesheet/TimeLogScreenshots"));
-
-const TimesheetReport = lazy(
-  () => import("./pages/reports/timesheet/TimesheetReport"),
-);
-const ProjectReport = lazy(
-  () => import("./pages/reports/project/ProjectReport"),
-);
-const ClientReport = lazy(() => import("./pages/reports/client/ClientReport"));
-const ClientProfile = lazy(() => import("./pages/client/ClientProfile"));
-const LiveReport = lazy(() => import("./pages/reports/live/LiveReport"));
-const LiveReportTest = lazy(
-  () => import("./pages/reports/live/LiveReportTest"),
-);
-const ProjectManagement = lazy(
-  () => import("./pages/manage/projects/ProjectManagement"),
-);
-const ClientManagement = lazy(
-  () => import("./pages/manage/clients/ClientManagement"),
-);
 const EmployeeManagement = lazy(
   () => import("./pages/manage/employees/EmployeeManagement"),
 );
@@ -51,7 +19,6 @@ const SetPasswordScreen = lazy(() => import("./pages/auth/SetPasswordScreen"));
 const ForgotPass = lazy(() => import("./pages/auth/forgot-password"));
 const LockScreen = lazy(() => import("./pages/auth/lock-screen"));
 const Error = lazy(() => import("./pages/404"));
-const TeamDetail = lazy(() => import("./pages/team/TeamDetail"));
 const Salary = lazy(() => import("./pages/salary"));
 const UpdatePassword = lazy(() => import("./pages/auth/update-password"));
 const Attendance = lazy(() => import("./pages/attendance/attendance"));
@@ -121,15 +88,9 @@ const ReferenceDetails = lazy(
 
 const EmailPage = lazy(() => import("./pages/app/email"));
 const ChatPage = lazy(() => import("./pages/app/chat"));
-const ProjectPostPage = lazy(
-  () => import("./pages/manage/projects/ProjectManagement"),
-);
-const ProjectDetailsPage = lazy(
-  () => import("./components/project/ProjectDetailsPage"),
-);
-const AllProjectScreenshot = lazy(
-  () => import("./components/project/AllScreenshot"),
-);
+
+
+
 import "./components/ui/global.css";
 
 import Loading from "@/components/Loading";
@@ -144,7 +105,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 const Unsubscribe = lazy(() => import("./pages/utility/Unsubscribe"));
-import ClientTimesheet from "./clientpages/timesheet/ClientTimesheet";
+
 import ContactUs from "./pages/ContactUs";
 import Invoice from "./components/invoice/Invoice";
 import Onboarding from "./components/onboarding/Onboarding";
@@ -159,10 +120,9 @@ import NewPlan from "./pages/plans/NewPlan";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPlanData, checkUserLimit } from "./store/planSlice";
 import { notificationReceived, notificationCountsPatched } from "@/store/notificationsSlice";
-const Dashboard = lazy(() => import("./pages/dashboard2/Dashboard2"));
 
 import ExpiredInvitationModal from "./pages/inviteemployee/ExpiredInvitationModal";
-import ProjectDashboard from "./components/Projects";
+
 import PushPermissionGate from "./components/notifications/PushPermissionGate";
 import Swal from "sweetalert2";
 import LoginForm from "./pages/auth/common/login-form";
@@ -197,26 +157,15 @@ const ApiDocumentation = lazy(() => import("./pages/utility/ApiDocumentation/ind
 const DeveloperPortal = lazy(() => import("./pages/developer/DeveloperPortal"));
 const DeveloperDashboard = lazy(() => import("./pages/developer/DeveloperDashboard"));
 
-// Clinet imports start here
-const ClientProject = lazy(() => import("./clientpages/project/ClientProject"));
-const ClientDashboard = lazy(
-  () => import("./clientpages/dashboard/ClinetDashboard"),
-);
-const ClientNotification = lazy(
-  () => import("./clientpages/notification/ClientNotification"),
-);
-// Client Imports end here
+
 
 //Asana imports here
-const AsanaWorkSpace = lazy(() => import("./pages/asana/AsanaWorkSpace"));
+
 const EmployeeInviteRegister = lazy(
   () => import("./pages/inviteemployee/EmployeeInviteRegister"),
 );
 // Asan imports end here
-const TaskLogs = lazy(() => import("./pages/tasklogs/TaskLogs"));
-const TaskLogsScreenShots = lazy(
-  () => import("./pages/tasklogs/TaskLogScreenShots"),
-);
+
 
 const Holiday = lazy(() => import("./pages/manage/holiday/Holiday"));
 const Plans = lazy(() => import("./pages/plans/Plans"));
@@ -255,7 +204,7 @@ const SendNotification = lazy(
 const Inbox = lazy(() => import("./pages/Inbox/index"));
 
 // Trash
-const Trash = lazy(() => import("./pages/trash/index"));
+
 
 // Import addition at top with other lazy imports
 const TransactionTable = lazy(() => import("./pages/plans/TransactionTable"));

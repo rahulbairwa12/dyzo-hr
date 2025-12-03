@@ -3,7 +3,7 @@ import { Collapse } from "react-collapse";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Icon from "@/components/ui/Icon";
 import Multilevel from "./Multi";
-import AddProject from "@/components/Projects/AddProject";
+
 import useSidebar from "@/hooks/useSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { enforceSubscriptionLimit } from "@/store/planSlice";
@@ -11,7 +11,7 @@ import { enforceSubscriptionLimit } from "@/store/planSlice";
 const Submenu = ({ activeSubmenu, item, i, toggleMultiMenu, activeMultiMenu, onAddProject, canAddProjects, renderAsBody, sidebarHovered = false }) => {
   const isProjectsMenu = item.link === "projects";
   const [searchTerm, setSearchTerm] = useState("");
-  const [showAddProjectModal, setShowAddProjectModal] = useState(false);
+
   const [collapsed] = useSidebar();
   const dispatch = useDispatch();
   const location = useLocation(); // ⬅️ detect route changes
@@ -302,7 +302,7 @@ const Submenu = ({ activeSubmenu, item, i, toggleMultiMenu, activeMultiMenu, onA
               <span >Add Project</span>
             </button>
           )}
-          <AddProject showAddProjectModal={showAddProjectModal} setShowAddProjectModal={setShowAddProjectModal} />
+
         </div>
       ) : (
         <div className={isProjectsMenu ? "max-h-60 overflow-y-auto" : ""}>

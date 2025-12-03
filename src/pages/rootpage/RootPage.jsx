@@ -18,7 +18,7 @@ import aaron from './images/aaron-img.webp'
 import featureFour from './images/featureFour.webp'
 import featureFourmobile from './images/featureFour-mo.webp'
 import bottomcharacter from './images/bottomcharacter.webp'
-import bottomsectionbg from './images/bottomsectionbg.webp'
+
 import TimeTracking from './images/Time-tracking.png';
 import AutomaticReport from '../../assets/images/icons/automatic-report.png';
 import TaskManagement from '../../assets/images/icons/task-mangement.png';
@@ -126,7 +126,7 @@ const RootPage = () => {
           <div className="p-6 md:p-14  rounded-lg w-full max-w-[1020px] mx-auto bg-[#edf1f5]">
             <h1 className="text-xl md:text-4xl font-bold text-center mb-6 dark:text-black-500">Teams that trust Dyzo</h1>
             <div className="grid grid-cols-5 gap-8 justify-items-center max-w-fit m-auto items-center ">
-              <img src={prpwebslogo} alt="prpwebs" className="w-[35px] h-18 grayscale" width="35px" height="55px" loading="lazy"  />
+              <img src={prpwebslogo} alt="prpwebs" className="w-[35px] h-18 grayscale" width="35px" height="55px" loading="lazy" />
               <img src={seogrowthlogo} alt="seo growth" className="w-[60px] h-18 grayscale" width="60px" height="40px" loading="lazy" />
               <img src={alchemyleadslogo} alt="alchemyleads" className="w-[70px] h-18 grayscale" width="70px" height="54px" loading="lazy" />
               <img src={trustbadge} alt="trustbadge" className="w-[60px] h-18 grayscale" width="60px" height="45px" loading="lazy" />
@@ -373,7 +373,7 @@ const RootPage = () => {
 
 
       <section className="bottomCtaMain-wrapper relative overflow-hidden">
-        <img src={bottomsectionbg} className='absolute bg-img-bottomtamain' alt="Dyzo Info Image" width="1920px" height="488px" loading="lazy" />
+
 
         <div className="container bottomCtaMain-container">
           <div>

@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { fetchDelete } from "@/store/api/apiSlice";
 import EditLeaveModal from "./EditLeaveModal";
 import { intialLetterName } from "@/helper/helper";
-import DeleteClientPopUp from "@/components/client/DeleteClientPopUp";
+
 import { set } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { ProfilePicture } from "@/components/ui/profilePicture";
@@ -27,7 +27,7 @@ const LeaveTable = ({ data, fetchLeaves }) => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
   const userInfo = useSelector((state) => state.auth.user);
-  
+
   // Reference for the table container
   const tableContainerRef = React.useRef(null);
 
@@ -36,13 +36,13 @@ const LeaveTable = ({ data, fetchLeaves }) => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     // Initial check
     checkIfMobile();
-    
+
     // Add event listener for resize
     window.addEventListener('resize', checkIfMobile);
-    
+
     // Cleanup
     return () => {
       window.removeEventListener('resize', checkIfMobile);
@@ -53,11 +53,11 @@ const LeaveTable = ({ data, fetchLeaves }) => {
   const handleScroll = () => {
     if (tableContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = tableContainerRef.current;
-      
+
       // Horizontal scroll checks
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 5); // 5px buffer
-      
+
       // Force redraw of sticky elements on scroll to fix rendering issues
       const stickyElements = tableContainerRef.current.querySelectorAll('.sticky');
       stickyElements.forEach(el => {
@@ -75,7 +75,7 @@ const LeaveTable = ({ data, fetchLeaves }) => {
         left: direction === 'left' ? currentScroll - columnWidth : currentScroll + columnWidth,
         behavior: 'smooth'
       });
-      
+
       // Small delay to ensure proper redraw of borders after scrolling
       setTimeout(() => {
         handleScroll();
@@ -87,14 +87,14 @@ const LeaveTable = ({ data, fetchLeaves }) => {
   useEffect(() => {
     if (data.length > 0 && tableContainerRef.current) {
       handleScroll();
-      
+
       // Add event listener for scroll
       const scrollContainer = tableContainerRef.current;
       scrollContainer.addEventListener('scroll', handleScroll);
-      
+
       // Add resize event listener
       window.addEventListener('resize', handleScroll);
-      
+
       return () => {
         scrollContainer.removeEventListener('scroll', handleScroll);
         window.removeEventListener('resize', handleScroll);
@@ -132,12 +132,12 @@ const LeaveTable = ({ data, fetchLeaves }) => {
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const month = monthNames[date.getMonth()];
     const year = date.getFullYear();
-    
+
     if (isMobile) {
       // Simpler date format for mobile
       return `${day} ${month.substr(0, 3)} ${year}`;
     }
-    
+
     const dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()];
     return `${dayOfWeek}, ${day} ${month} ${year}`;
   };
@@ -158,7 +158,7 @@ const LeaveTable = ({ data, fetchLeaves }) => {
           <div>
             <span className="inline-flex items-center">
               <span className={`${isMobile ? 'h-7 w-7' : 'h-8 w-8'} rounded-full ltr:mr-2 md:ltr:mr-3 rtl:ml-3 flex-none bg-slate-600`}>
-                <ProfilePicture 
+                <ProfilePicture
                   user={{
                     name: original.employeeName || original.name,
                     profile_picture: original.employeeProfilePic || original.employeeProfilePicture,
@@ -240,7 +240,7 @@ const LeaveTable = ({ data, fetchLeaves }) => {
               </button>
 
               {/* Edit and Delete Buttons with Combined Conditions */}
-              {userInfo?.isAdmin  &&  (
+              {userInfo?.isAdmin && (
                 <>
                   {/* Edit Button */}
                   <button
@@ -312,10 +312,10 @@ const LeaveTable = ({ data, fetchLeaves }) => {
           <h4 className="card-title mb-3 md:mb-0">Leaves Table</h4>
           <div className="flex items-center justify-between md:justify-end w-full md:w-auto gap-3">
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-            
+
             {isMobile && (
               <div className="flex items-center space-x-2">
-                <button 
+                <button
                   onClick={() => scrollTable('left')}
                   disabled={!canScrollLeft}
                   className={`p-1.5 rounded-md ${canScrollLeft ? 'text-primary-600 hover:bg-gray-100 dark:hover:bg-slate-700' : 'text-gray-300 dark:text-gray-600 cursor-not-allowed'}`}
@@ -323,7 +323,7 @@ const LeaveTable = ({ data, fetchLeaves }) => {
                 >
                   <Icon icon="heroicons:chevron-left" className="w-5 h-5" />
                 </button>
-                <button 
+                <button
                   onClick={() => scrollTable('right')}
                   disabled={!canScrollRight}
                   className={`p-1.5 rounded-md ${canScrollRight ? 'text-primary-600 hover:bg-gray-100 dark:hover:bg-slate-700' : 'text-gray-300 dark:text-gray-600 cursor-not-allowed'}`}
@@ -335,8 +335,8 @@ const LeaveTable = ({ data, fetchLeaves }) => {
             )}
           </div>
         </div>
-        <div 
-          className="overflow-x-auto -mx-6 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-slate-600" 
+        <div
+          className="overflow-x-auto -mx-6 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-slate-600"
           ref={tableContainerRef}
         >
           <div className={`inline-block min-w-full align-middle ${isMobile ? 'pb-4' : ''}`}>
@@ -384,8 +384,8 @@ const LeaveTable = ({ data, fetchLeaves }) => {
                           className="cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700"
                         >
                           {row.cells.map((cell) => (
-                            <td 
-                              {...cell.getCellProps()} 
+                            <td
+                              {...cell.getCellProps()}
                               className="table-td whitespace-nowrap py-2 md:py-3"
                             >
                               {cell.render("Cell")}
@@ -450,7 +450,7 @@ const LeaveTable = ({ data, fetchLeaves }) => {
         />
       )}
 
-      <DeleteClientPopUp showModal={showDeleteLeaveModal} onClose={() => setShowDeleteLeaveModal(false)} handleDelete={handleDeleteLeave} loading={deleteLoading} />
+
     </>
   );
 };
